@@ -4,7 +4,7 @@ import {generalService} from '../../../services/general.service';
 import {Menu} from '../../menu/menu';
 
 @Page({
-    templateUrl: 'build/pages/rentIt/location/location.html',
+    templateUrl: 'build/pages/rentIt/location/location2.html',
     styles: [`
     	.discard{
     		color:#387ef5!important;
@@ -97,7 +97,7 @@ import {Menu} from '../../menu/menu';
    providers: [generalService]
 })
 
-export class Location {
+export class Location2 {
 	public search=false;
 	public recent=true;
 	public nearMe=false;
@@ -134,8 +134,7 @@ export class Location {
 
     };
     getLocation(location){
-    	this._generalService.getLocation(location);
-    	this._navController.push(rentIt, {pickUpLocaton: this._generalService.getLocation(location)});
+    	this._navController.push(rentIt, {returnLocaton: this._generalService.getLocation(location)});
     }
     onDiscard(){
     	this._navController.pop(Menu);
@@ -148,7 +147,7 @@ export class Location {
     activeRecent(){
     	this.search = false;
     	this.recent = true;
-    	this.nearMe =false;
+    	this.nearMe=false;
     };
     activeNearMe(){
     	this.search = false;

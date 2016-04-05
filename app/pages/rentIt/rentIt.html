@@ -9,22 +9,22 @@
         <div class="btns">
             <button class="btn" block (click)="goToLocation()">
                 <ion-card class="card">
-                    <span>{{pickUpLocaton}}</span>
+                    <span>{{info.pickUpLocaton}}</span>
                 </ion-card>
             </button>
-            <button class="btn" block>
+            <button class="btn" block (click)="goToLocation2()">
                 <ion-card class="card">
-                    <span>{{returnLocaton}}</span>
+                    <span>{{info.returnLocaton}}</span>
                 </ion-card>
             </button>
             <button class="btn" block>
               <ion-card class="card">
-                  <span>{{pickUpDate}}</span>
+                  <span>{{info.pickUpDate}}</span>
               </ion-card>
             </button>
             <button class="btn" block>
               <ion-card class="card">
-                  <span>{{returnDate}}</span>
+                  <span>{{info.returnDate}}</span>
               </ion-card>
             </button>
             <button class="continue-btn" block>Continue</button>

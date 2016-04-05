@@ -28,6 +28,7 @@ import {rentIt} from '../rentIt/rentIt';
     `]
 })
 export class Menu {  
+	public myIcon;
     constructor(private _NavController: NavController) {
     	 this.myIcon = "logo-apple";
     }

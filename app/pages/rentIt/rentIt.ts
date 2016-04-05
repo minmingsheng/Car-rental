@@ -1,6 +1,8 @@
-import {Page, NavController} from 'ionic-angular';
+import {Page, NavController,NavParams,Storage,LocalStorage} from 'ionic-angular';
 import {Menu} from '../menu/menu';
 import {Location} from './location/location';
+import {Location2} from './location/location2';
+import {generalService} from '../../services/general.service';
 
 @Page({
     templateUrl: 'build/pages/rentIt/rentIt.html',
@@ -74,19 +76,41 @@ import {Location} from './location/location';
 			color:rgb(77, 77, 91)!important;
 		}
 
-  `]
+  `],
+  providers:[generalService]
 })
-export class rentIt {
-	public pickUpLocaton = "Choose a pick-up location.."
-	public returnLocaton = "Choose a return location.."
-	public pickUpDate = "Choose a pick-ip date.."
-	public returnDate = "Choose a return date.."
-    
-    constructor(private _navController: NavController) {
+export class rentIt{
+    public basicInfo={
+    	pickUpLocaton : "Choose a pick-up location..",
+    	returnLocaton : "Choose a return location..",
+    	pickUpDate : "Choose a pick-ip date..",
+    	returnDate : "Choose a return date.."
+    }
+    public local;
+    public info;
+    constructor(private _navController: NavController, private _generalService: generalService,  private navParams: NavParams) {
+    	this.local = new Storage(LocalStorage);
+    	this.local.set('info', JSON.stringify(this.basicInfo));
+
+    	console.log(this.local.get("info"))
+    	console.dir(this.info);
+    	
+    	if(navParams.get('pickUpLocaton')){
+    		this.basicInfo.pickUpLocaton = navParams.get('pickUpLocaton');
+    		this.local.set('info', JSON.stringify(this.basicInfo));
+    	}	
+    	if(navParams.get('returnLocaton')){
+    		this.basicInfo.returnLocaton = navParams.get('returnLocaton');
+    		this.local.set('info', JSON.stringify(this.basicInfo));
+    	}
+    	this.info = JSON.parse(this.local.get("info")._result);
     }
 
     goToLocation(){
     	this._navController.push(Location)
+    }
+    goToLocation2(){
+    	this._navController.push(Location2)
     }
 
 }	
