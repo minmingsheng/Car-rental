@@ -1,0 +1,23 @@
+<ion-toolbar>
+  <ion-buttons start>
+    <button royal>
+      <ion-icon name="search"></ion-icon>
+    </button>
+  </ion-buttons>
+  <ion-title>Zental</ion-title>
+  <ion-buttons end>
+    <button royal>
+      <ion-icon [name]="myIcon"></ion-icon>
+    </button>
+  </ion-buttons>
+</ion-toolbar>
+
+<ion-content>
+	<div class="img"></div>
+	<div class="btns">
+    	<button class="btn" block (click) = "goToRent()">Rent It</button>
+    	<button class="btn" block>Use It</button>
+    	<button class="btn" block>Manage It</button>
+    </div>
+</ion-content>
+

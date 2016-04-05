@@ -1,0 +1,76 @@
+<ion-navbar *navbar>
+  <ion-title>
+    Location
+  </ion-title>
+	<!-- <ion-label (click)="onDiscard()" end>Discard</ion-label> -->
+	<ion-buttons end>
+	  <button (click)="onDiscard()">
+	    Discard
+	  </button>
+	</ion-buttons>
+</ion-navbar>
+<ion-content>
+	<div class="tabs">
+		<ion-card class="card"  (click)= "activeSearch()" [class.bg]="search">
+		  <ion-card-header [class.bg]="search">
+		    Search
+		  </ion-card-header>
+		</ion-card>
+		<ion-card class="card" (click)= "activeRecent()" [class.bg]="recent">
+		  <ion-card-header [class.bg]="recent">
+		    Recent
+		  </ion-card-header>
+		</ion-card>
+		<ion-card class="card" (click)= "activeNearMe()" [class.bg]="nearMe">
+		  <ion-card-header [class.bg]="nearMe">
+		    Near Me
+		  </ion-card-header>
+		</ion-card>
+	</div>
+
+	<div *ngIf="search" class="tab-search">
+		<ion-searchbar class="search">
+		</ion-searchbar>
+	</div>
+	<div *ngIf="recent"  class="tab-recent">
+		<ion-card *ngFor = "#recentResult of recentResults" class="recent-card">
+			<div class="card-info">
+				 <ion-card-header class="name">
+				    {{recentResult.name}}
+				 </ion-card-header>
+				 <ion-card-content >
+					{{recentResult.address}}
+					{{recentResult.tel}}
+				 </ion-card-content>
+			</div>
+			<button>select</button>
+		</ion-card>
+	</div>
+	<div *ngIf="nearMe" class="tab-recent">
+		<button class="location-list" (click)="onNearMeToMap()" [class.nearMeToMap]="nearMeToMap">Location List</button>
+		<div *ngIf = "showList">
+			<ion-card *ngFor = "#nearMeResult of nearMeResults" class="recent-card">
+				<div class="card-info">
+					 <ion-card-header class="name">
+					    {{nearMeResult.name}}
+					 </ion-card-header>
+					 <ion-card-content >
+						{{nearMeResult.address}}
+						{{nearMeResult.tel}}
+					 </ion-card-content>
+				</div>
+				<button>select</button>
+			</ion-card>
+		</div>
+		<div *ngIf = "!showList">
+			<ion-card class="map-address">
+				{{nearMeAddress}}
+			</ion-card>
+			<div class="map">
+				map
+			</div>
+		</div>
+
+	</div>
+
+</ion-content>

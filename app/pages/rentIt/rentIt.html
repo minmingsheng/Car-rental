@@ -1,0 +1,33 @@
+<ion-navbar *navbar>
+    <ion-title>
+       Rent It
+    </ion-title>
+</ion-navbar>
+<ion-content>
+  <div class="content">
+        <div class="map"></div>
+        <div class="btns">
+            <button class="btn" block (click)="goToLocation()">
+                <ion-card class="card">
+                    <span>{{pickUpLocaton}}</span>
+                </ion-card>
+            </button>
+            <button class="btn" block>
+                <ion-card class="card">
+                    <span>{{returnLocaton}}</span>
+                </ion-card>
+            </button>
+            <button class="btn" block>
+              <ion-card class="card">
+                  <span>{{pickUpDate}}</span>
+              </ion-card>
+            </button>
+            <button class="btn" block>
+              <ion-card class="card">
+                  <span>{{returnDate}}</span>
+              </ion-card>
+            </button>
+            <button class="continue-btn" block>Continue</button>
+        </div>
+  </div>
+</ion-content>
