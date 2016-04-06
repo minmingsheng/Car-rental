@@ -2,6 +2,8 @@ import {Page, NavController,NavParams,Storage,LocalStorage} from 'ionic-angular'
 import {Menu} from '../menu/menu';
 import {Location} from './location/location';
 import {Location2} from './location/location2';
+import {Date1} from './date/date1';
+import {Date2} from './date/date2';
 import {generalService} from '../../services/general.service';
 
 @Page({
@@ -80,30 +82,30 @@ import {generalService} from '../../services/general.service';
   providers:[generalService]
 })
 export class rentIt{
-    public basicInfo={
-    	pickUpLocaton : "Choose a pick-up location..",
-    	returnLocaton : "Choose a return location..",
-    	pickUpDate : "Choose a pick-ip date..",
-    	returnDate : "Choose a return date.."
-    }
+    // public basicInfo={
+    // 	pickUpLocaton : "Choose a pick-up location..",
+    // 	returnLocaton : "Choose a return location..",
+    // 	pickUpDate : "Choose a pick-ip date..",
+    // 	returnDate : "Choose a return date.."
+    // }
+    public basicInfo;
     public local;
-    public info;
     constructor(private _navController: NavController, private _generalService: generalService,  private navParams: NavParams) {
     	this.local = new Storage(LocalStorage);
-    	this.local.set('info', JSON.stringify(this.basicInfo));
-
-    	console.log(this.local.get("info"))
-    	console.dir(this.info);
-    	
     	if(navParams.get('pickUpLocaton')){
-    		this.basicInfo.pickUpLocaton = navParams.get('pickUpLocaton');
-    		this.local.set('info', JSON.stringify(this.basicInfo));
+    		this.local.set('pickUpLocaton', navParams.get('pickUpLocaton'));
     	}	
     	if(navParams.get('returnLocaton')){
-    		this.basicInfo.returnLocaton = navParams.get('returnLocaton');
-    		this.local.set('info', JSON.stringify(this.basicInfo));
+    		this.local.set('returnLocaton', navParams.get('returnLocaton'));
     	}
-    	this.info = JSON.parse(this.local.get("info")._result);
+    	this.basicInfo={
+	    	pickUpLocaton : this.local.get("pickUpLocaton")._result,
+	    	returnLocaton : this.local.get("returnLocaton")._result,
+	    	pickUpDate : this.local.get("pickUpDate")._result,
+	    	returnDate : this.local.get("returnDate")._result
+  	 	}
+
+    	
     }
 
     goToLocation(){
@@ -111,6 +113,13 @@ export class rentIt{
     }
     goToLocation2(){
     	this._navController.push(Location2)
+    }
+    goDate1(){
+    	this._navController.push(Date1)
+    }
+
+    goDate2(){
+    	this._navController.push(Date2)
     }
 
 }	

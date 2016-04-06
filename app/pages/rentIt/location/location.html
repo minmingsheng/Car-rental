@@ -1,3 +1,4 @@
+
 <ion-navbar *navbar>
   <ion-title>
     Location
@@ -66,7 +67,7 @@
 			<ion-card class="map-address">
 				{{nearMeAddress}}
 			</ion-card>
-			<div class="map">
+			<div class="map" id="map" #map (load)="onMapLoad(map)">
 				map
 			</div>
 		</div>

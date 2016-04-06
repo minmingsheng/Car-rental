@@ -1,4 +1,4 @@
-import {Page, NavController} from 'ionic-angular';
+import {Page,NavController} from 'ionic-angular';
 import {rentIt} from '../rentIt';
 import {generalService} from '../../../services/general.service';
 import {Menu} from '../../menu/menu';
@@ -89,8 +89,7 @@ import {Menu} from '../../menu/menu';
 			position:absolute;
 			top:3.7em;
 			width:100%;
-			height:500px;
-			background:#387ef5;
+			height:31em;
 			margin:0;
 		}
   `],
@@ -98,6 +97,8 @@ import {Menu} from '../../menu/menu';
 })
 
 export class Location {
+	public google;
+	public map;
 	public search=false;
 	public recent=true;
 	public nearMe=false;
@@ -131,7 +132,7 @@ export class Location {
 		tel: "902-322-1234",
 	}] 
     constructor(private _navController: NavController, private _generalService: generalService) {
-
+    	this.map = null;
     };
     getLocation(location){
     	this._generalService.getLocation(location);
@@ -164,7 +165,71 @@ export class Location {
     		/*bottom*/
     		this.nearMeToMap = true;
     		this.showList = false;
+
+    		setTimeout(()=>{
+				let mapDom = document.querySelector(".map");
+				let options = {timeout: 10000, enableHighAccuracy: true};
+				
+				navigator.geolocation.getCurrentPosition(
+				
+				    (position) => {
+				        let latLng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+				        let styleArray = [
+						    {
+						      featureType: "all",
+						      stylers: [
+						       { saturation: -80 }
+						      ]
+						    },{
+						      featureType: "road.arterial",
+						      elementType: "geometry",
+						      stylers: [
+						        { hue: "#00ffee" },
+						        { saturation: 50 }
+						      ]
+						    },{
+						      featureType: "poi.business",
+						      elementType: "labels",
+						      stylers: [
+						        { visibility: "off" }
+						      ]
+						    }
+						 ];
+				
+				        let mapOptions = {
+				            center: latLng,
+				            styles: styleArray,
+				            zoom: 15,
+				            mapTypeId: google.maps.MapTypeId.ROADMAP
+				        }
+
+				        this.map = new google.maps.Map(document.getElementById("map"), mapOptions);
+				        let marker = new google.maps.Marker({
+				        	scrollwheel: false,
+				            map: this.map,
+				            animation: google.maps.Animation.DROP,
+				            position: this.map.getCenter()
+				         });
+				        let content = "<h4>Information!</h4>"; 
+				        this.addInfoWindow(marker, content);
+				    },
+				
+				    (error) => {
+				        console.log(error);
+				    }, options);
+				}, 100);
     	}
+    }
+    addInfoWindow(marker, content){
+     
+      let infoWindow = new google.maps.InfoWindow({
+        content: content
+      });
+     
+      google.maps.event.addListener(marker, 'click', function(){
+        infoWindow.open(this.map, marker);
+      });
+     
     }
 
 }	

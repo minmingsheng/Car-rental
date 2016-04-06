@@ -1,0 +1,99 @@
+
+<ion-navbar *navbar>
+  <ion-title>
+    Date2
+  </ion-title>
+	<!-- <ion-label (click)="onDiscard()" end>Discard</ion-label> -->
+	<ion-buttons end>
+	  <button (click)="onDiscard()">
+	    Discard
+	  </button>
+	</ion-buttons>
+</ion-navbar>
+<ion-content>
+	<div class="tabs">
+		<ion-card class="card"  (click)= "goToDate1()" [class.bg]="pick">
+		  <ion-card-header [class.bg]="pick">
+		    Pick-up Date
+		    <p class="p">{{date1}}</p>
+		  </ion-card-header>
+		</ion-card>
+		<ion-card class="card"  [class.bg]="returnD">
+		  <ion-card-header [class.bg]="returnD">
+		    Return Date
+		    <p class="p">{{date2}}</p>
+		  </ion-card-header>
+		</ion-card>
+	</div>
+	<div class="calendar">
+		<ion-card *ngFor = "#month of months">
+		  <ion-card-header class="calender-title months">
+		    {{month}}
+		  </ion-card-header>
+		  <ion-card-content  class="days">
+		    <table>
+			  <tr>
+			    <td>Su</td>
+			    <td>Mo</td>		
+			    <td>Tu</td>
+			    <td>We</td>
+			    <td>Th</td>
+			    <td>Fr</td>
+			    <td>Sr</td>
+			  </tr>
+			 </table>
+		  </ion-card-content >
+		  <ion-card-content >
+			<table class="d">
+			  <tr>
+			    <td></td>
+			    <td></td>		
+			    <td>1</td>
+			    <td>2</td>
+			    <td>3</td>
+			    <td>4</td>
+			    <td>5</td>
+			  </tr>
+			  <tr>
+			    <td>6</td>		
+			    <td>7</td>
+			    <td>8</td>
+			    <td>9</td>
+			    <td>10</td>
+			    <td>11</td>
+			    <td>12</td>
+			  </tr>
+			  <tr>
+			    <td>13</td>		
+			    <td>14</td>
+			    <td>15</td>
+			    <td>16</td>
+			    <td>17</td>
+			    <td>18</td>
+			    <td>19</td>
+			  </tr>
+			  <tr>
+			    <td>20</td>		
+			    <td>21</td>
+			    <td>22</td>
+			    <td>23</td>
+			    <td>24</td>
+			    <td>25</td>
+			    <td>26</td>
+			  </tr>
+			  <tr>
+			    <td>27</td>		
+			    <td>28</td>
+			    <td>29</td>
+			    <td>30</td>
+			    <td>31</td>
+			    <td></td>
+			    <td></td>
+			  </tr>
+			</table>
+		  </ion-card-content>
+			
+			
+		</ion-card>
+	</div>
+</ion-content>
