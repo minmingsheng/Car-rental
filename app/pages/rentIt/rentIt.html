@@ -8,30 +8,52 @@
         <div class="map"></div>
         <div class="btns">
             <button class="btn" block (click)="goToLocation()">
-                <ion-card class="card">
-                    <span *ngIf = "basicInfo.pickUpLocaton"><b>Pick-up location: </b>{{basicInfo.pickUpLocaton}}</span>
-                    <span *ngIf = "!basicInfo.pickUpLocaton">Choose a pick-up location..</span>
+                <ion-card class="card" [class.cardbg]="basicInfo.pickUpLocaton">
+                    <span *ngIf = "basicInfo.pickUpLocaton"  class="wordColor">
+                      <p class="b">Pick-up location: </p>
+                      {{basicInfo.pickUpLocaton}}
+                    </span>
+                    <span *ngIf = "!basicInfo.pickUpLocaton">
+                      Choose a pick-up location..
+                    </span>
                 </ion-card>
             </button>
             <button class="btn" block (click)="goToLocation2()">
-                <ion-card class="card">
-                    <span *ngIf = "basicInfo.returnLocaton"><b>Return location: </b>{{basicInfo.returnLocaton}}</span>
-                    <span *ngIf = "!basicInfo.returnLocaton">Choose a return location..</span>
+                <ion-card class="card" [class.cardbg]="basicInfo.returnLocaton">
+                    <span *ngIf = "basicInfo.returnLocaton"  class="wordColor">
+                      <p class="b">Return location: </p>
+                      {{basicInfo.returnLocaton}}
+                    </span>
+                    <span *ngIf = "!basicInfo.returnLocaton">
+                      Choose a return location..
+                    </span>
                 </ion-card>
             </button>
             <button class="btn" block  (click)="goDate1()">
-              <ion-card class="card">
-                  <span *ngIf="basicInfo.pickUpDate">{{basicInfo.pickUpDate}}</span>
-                  <span *ngIf="!basicInfo.pickUpDate">Choose a pick-up date..</span>
+              <ion-card class="card" [class.cardbg]="basicInfo.pickUpDate">
+                  <span *ngIf="basicInfo.pickUpDate" class="wordColor">
+                    <p class="b">Pick-up date: </p>
+                    {{basicInfo.pickUpDate}}
+                  </span>
+                  <span *ngIf="!basicInfo.pickUpDate">
+                    Choose a pick-up date..
+                  </span>
               </ion-card>
             </button>
             <button class="btn" block (click)="goDate2()">
-              <ion-card class="card">
-                  <span *ngIf="basicInfo.pickUpDate">{{basicInfo.returnDate}}</span>
-                  <span *ngIf="!basicInfo.returnDate">Choose a return date..</span>
+              <ion-card class="card" [class.cardbg]="basicInfo.returnDate">
+                  <span *ngIf="basicInfo.returnDate"  class="wordColor">
+                    <p class="b">Return date: </p>
+                    {{basicInfo.returnDate}}
+                  </span>
+                  <span *ngIf="!basicInfo.returnDate">
+                    Choose a return date..
+                  </span>
               </ion-card>
             </button>
-            <button class="continue-btn" block>Continue</button>
+            <button class="continue-btn" block (click)="onContinue()" [class.continueC]="continue"> 
+              Continue
+            </button>
         </div>
   </div>
 </ion-content>

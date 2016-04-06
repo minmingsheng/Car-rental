@@ -2,7 +2,7 @@ import {Page,NavController} from 'ionic-angular';
 import {rentIt} from '../rentIt';
 import {generalService} from '../../../services/general.service';
 import {Menu} from '../../menu/menu';
-import {Date2} from './date2';
+import {rentIt} from '../rentIt';
 
 @Page({
     templateUrl: 'build/pages/rentIt/date/date1.html',
@@ -81,9 +81,9 @@ export class Date1 {
 	public date1;
 	public date2;
 	public pick=true;
-	public pickB=false;
-	public returnB=false;
+	public pickB=true;
 	public pickPermision=true;
+	public returnB=false;
 	public returnD=false;
 	public returnDPermision=false;
 
@@ -95,10 +95,18 @@ export class Date1 {
     onDiscard(){
     	this._navController.pop(Menu);
     };
-    goToDate2(){
-    	this._navController.push(Date2);
+    activePick(){
+		this.pick = true;
+		this.pickPermision=true;
+		this.returnD = false;
+		this.returnDPermision = false;
     };
-
+    activeReturn(){
+		this.returnD = true;
+		this.returnDPermision=true;
+		this.pick = false;
+		this.pickPermision=false;
+    }
     onPageDidEnter(){
     	console.log(document.querySelectorAll(".d td"));
     	let tds = document.querySelectorAll(".d td");
@@ -130,27 +138,17 @@ export class Date1 {
     			})
     		}
     	
-    	// if(this.returnD && this.returnDPermision){
-    	// 	for (var i = 0; i < tds.length; ++i) {
-    	// 		tds[i].addEventListener("click", function(){
-    	// 			clearColor();
-    	// 			let day = this.textContent;
-    	// 			let months = this.parentElement.parentElement.parentElement.parentElement.parentElement.querySelector('.months').textContent;
-    	// 			that.date2 = months + " "+ day
-    	// 			this.style.background= '#171230';
-    	// 			this.style.color= '#45c0c4';
-    	// 		})
-    	// 	}
-    	// }
-
-
-    	function clearColor(r, p){
+    	function clearColor(){
     		for (var i = 0; i < tds.length; ++i) {
-				tds[i].style.background = "transparent";
-				tds[i].style.color = "#040809";    			    			
+    			tds[i].style.background = "transparent";
+    			tds[i].style.color = "#040809";
     		}
     	}
 
+    }
+    backToRentIt(){
+    	this._navController.push(rentIt, {date1: this.date1, date2:this.date2});
+    	
     }
 
 

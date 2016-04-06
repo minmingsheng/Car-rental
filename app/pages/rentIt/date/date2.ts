@@ -2,10 +2,10 @@ import {Page,NavController} from 'ionic-angular';
 import {rentIt} from '../rentIt';
 import {generalService} from '../../../services/general.service';
 import {Menu} from '../../menu/menu';
-import {Date1} from './date1';
+import {rentIt} from '../rentIt';
 
 @Page({
-    templateUrl: 'build/pages/rentIt/date/date2.html',
+    templateUrl: 'build/pages/rentIt/date/date1.html',
     styles: [`
     	.discard{
     		color:#387ef5!important;
@@ -82,10 +82,10 @@ export class Date2 {
 	public date2;
 	public pick=false;
 	public pickB=false;
-	public returnB=true;
 	public pickPermision=false;
+	public returnB=true;
 	public returnD=true;
-	public returnDPermision=false;
+	public returnDPermision=true;
 
     constructor(private _navController: NavController, private _generalService: generalService) {
 
@@ -95,10 +95,18 @@ export class Date2 {
     onDiscard(){
     	this._navController.pop(Menu);
     };
-    goToDate1(){
-    	this._navController.push(Date1);
+    activePick(){
+		this.pick = true;
+		this.pickPermision=true;
+		this.returnD = false;
+		this.returnDPermision = false;
     };
-
+    activeReturn(){
+		this.returnD = true;
+		this.returnDPermision=true;
+		this.pick = false;
+		this.pickPermision=false;
+    }
     onPageDidEnter(){
     	console.log(document.querySelectorAll(".d td"));
     	let tds = document.querySelectorAll(".d td");
@@ -129,14 +137,18 @@ export class Date2 {
     				}
     			})
     		}
-
-    	function clearColor(r, p){
+    	
+    	function clearColor(){
     		for (var i = 0; i < tds.length; ++i) {
-				tds[i].style.background = "transparent";
-				tds[i].style.color = "#040809";    			    			
+    			tds[i].style.background = "transparent";
+    			tds[i].style.color = "#040809";
     		}
     	}
 
+    }
+    backToRentIt(){
+    	this._navController.push(rentIt, {date1: this.date1, date2:this.date2});
+    	
     }
 
 

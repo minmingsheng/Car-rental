@@ -4,6 +4,7 @@ import {Location} from './location/location';
 import {Location2} from './location/location2';
 import {Date1} from './date/date1';
 import {Date2} from './date/date2';
+import {Cars} from '../cars/cars';
 import {generalService} from '../../services/general.service';
 
 @Page({
@@ -49,9 +50,24 @@ import {generalService} from '../../services/general.service';
 			background: #2a283d!important;
 		}
 		.continue-btn{
-			color:#3ebabe;
+			color:#fff;
 			height:70px;
 			background:#171230!important;
+		}
+		.continueC{
+			color:rgba(68, 197, 200, 1);
+			animation: showup 1s 1 ease;
+		}
+		@keyframes showup{
+			from{
+				color:rgba(68, 197, 200, 0);
+				font-size: 0.4em;
+			}
+			70%{
+				color:rgba(68, 197, 200, 0.4);
+				font-size: 1.2em;
+			}
+
 		}
 		.card{
 			height:75%!important;
@@ -66,6 +82,13 @@ import {generalService} from '../../services/general.service';
 			text-align:left;
 			padding-left:1.3em;
 		}
+		.cardbg{
+			background:transparent;
+		}
+		.wordColor{
+			color:rgba(250, 250, 250, 0.66)!important;
+
+		}
 		.card::before{
 			position:absolute !important;
 			content:"  ";
@@ -77,19 +100,18 @@ import {generalService} from '../../services/general.service';
 		span{
 			color:rgb(77, 77, 91)!important;
 		}
+		.b{
+			color:#44c5c8;
+			display:inline;
+		}
 
   `],
   providers:[generalService]
 })
 export class rentIt{
-    // public basicInfo={
-    // 	pickUpLocaton : "Choose a pick-up location..",
-    // 	returnLocaton : "Choose a return location..",
-    // 	pickUpDate : "Choose a pick-ip date..",
-    // 	returnDate : "Choose a return date.."
-    // }
     public basicInfo;
     public local;
+    public continue;
     constructor(private _navController: NavController, private _generalService: generalService,  private navParams: NavParams) {
     	this.local = new Storage(LocalStorage);
     	if(navParams.get('pickUpLocaton')){
@@ -97,15 +119,29 @@ export class rentIt{
     	}	
     	if(navParams.get('returnLocaton')){
     		this.local.set('returnLocaton', navParams.get('returnLocaton'));
+    	}	
+    	if(navParams.get('date1')){
+    		this.local.set('pickUpDate', navParams.get('date1'));
+    	}	
+    	if(navParams.get('date2')){
+    		this.local.set('returnDate', navParams.get('date2'));
     	}
     	this.basicInfo={
 	    	pickUpLocaton : this.local.get("pickUpLocaton")._result,
 	    	returnLocaton : this.local.get("returnLocaton")._result,
 	    	pickUpDate : this.local.get("pickUpDate")._result,
-	    	returnDate : this.local.get("returnDate")._result
+	    	returnDate : this.local.get("returnDate")._result,
   	 	}
-
-    	
+  	 	if(
+  	 		this.basicInfo.pickUpLocaton &&
+  	 		this.basicInfo.returnLocaton &&
+  	 		this.basicInfo.pickUpDate &&
+  	 		this.basicInfo.returnDate
+  	 	){
+  	 		this.continue  = true;
+  	 	}else{
+  	 		this.continue  = false;
+  	 	}
     }
 
     goToLocation(){
@@ -120,6 +156,20 @@ export class rentIt{
 
     goDate2(){
     	this._navController.push(Date2)
+    }
+    onContinue(){
+    	if(
+    		this.basicInfo.pickUpLocaton &&
+    		this.basicInfo.returnLocaton &&
+    		this.basicInfo.pickUpDate &&
+    		this.basicInfo.returnDate
+    	){
+    		this._navController.push(Cars)
+    	}else{
+    		console.log("something need to do ");
+    		
+    	}
+    	
     }
 
 }	

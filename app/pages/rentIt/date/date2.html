@@ -1,5 +1,9 @@
-
-<ion-navbar *navbar>
+<ion-navbar *navbar hideBackButton>
+	<ion-buttons start>
+	   <button (click)="backToRentIt()">
+	     <ion-icon name="md-arrow-round-back"></ion-icon>
+	   </button>
+	 </ion-buttons>
   <ion-title>
     Date2
   </ion-title>
@@ -12,13 +16,13 @@
 </ion-navbar>
 <ion-content>
 	<div class="tabs">
-		<ion-card class="card"  (click)= "goToDate1()" [class.bg]="pick">
+		<ion-card class="card"  [class.bg]="pick" (click)= "activePick()">
 		  <ion-card-header [class.bg]="pick">
 		    Pick-up Date
 		    <p class="p">{{date1}}</p>
 		  </ion-card-header>
 		</ion-card>
-		<ion-card class="card"  [class.bg]="returnD">
+		<ion-card class="card" (click)= "activeReturn()" [class.bg]="returnD">
 		  <ion-card-header [class.bg]="returnD">
 		    Return Date
 		    <p class="p">{{date2}}</p>
