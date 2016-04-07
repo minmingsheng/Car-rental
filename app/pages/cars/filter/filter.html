@@ -1,0 +1,144 @@
+<!-- toolbar -->
+<ion-navbar *navbar hideBackButton  >
+  <ion-buttons start>
+    <button (click) = "back()" style="color:#44c5c8; padding-right: 1em; opacity: 0.7;">
+      <img src="build/img/backCar-54.png" alt="" style="width: 60%">
+    </button>
+  </ion-buttons>
+
+  <ion-title style="background:url(build/img/NavBarBg-53.jpg)">
+   <img src="build/img/zentalLogo-04.png" alt="loading.." style="width: 40%">
+  </ion-title>
+  <!-- <ion-label (click)="onDiscard()" end>Discard</ion-label> -->
+  <ion-buttons end>
+    <button style="color:#44c5c8; padding-right: 1em; opacity: 0.7;">
+      Discard
+    </button>
+  </ion-buttons>
+</ion-navbar>
+
+<!-- filter -->
+<ion-content style="background:url(build/img/subbg-52.jpg); background-size: cover;">
+  <button 
+    block (click)="pendding()" 
+    style="
+    position: absolute; top: 0; margin:0; border-radius:0; background: #15132a; height:4em; color:#41c3c6"
+  > 
+    Filter
+  </button>
+
+<!-- selection -->
+<div style="margin-top: 5em">
+  <!-- Category -->
+  <ion-list style="padding-top:1em; color:#41c3c6;">
+      <ion-label style="display: inline; margin:0; float:left; padding-left: 2em" >Category</ion-label>  
+      <ion-select [(ngModel)]="gaming" style="width: auto;padding:0; padding-right:2em; margin:0;float:right">
+        <ion-option value="Cars" checked="true">Cars</ion-option>
+        <ion-option value="Trucks">Trucks</ion-option>
+        <ion-option value="SUV">SUV</ion-option>
+      </ion-select>
+  </ion-list>
+  <!-- Price -->
+  <ion-list style="padding-top:1em; color:#41c3c6;">
+      <ion-label style="display: inline; margin:0; float:left; padding-left: 2em" >Price</ion-label>  
+      <ion-select [(ngModel)]="gaming" style="width: auto;padding:0; padding-right:2em; margin:0;float:right">
+        <ion-option value="nes" checked="true">Max</ion-option>
+        <ion-option value="n64">$500</ion-option>
+        <ion-option value="ps">$200</ion-option>
+        <ion-option value="genesis">$140</ion-option>
+        <ion-option value="saturn">$80</ion-option>
+        <ion-option value="snes">$20</ion-option>
+      </ion-select>  
+      <ion-select [(ngModel)]="gaming" style="width: auto;padding:0; padding-right:2em; margin:0;float:right">
+        <ion-option value="nes" checked="true">Min</ion-option>
+        <ion-option value="n64">$20</ion-option>
+        <ion-option value="ps">$80</ion-option>
+        <ion-option value="genesis">$140</ion-option>
+        <ion-option value="saturn">$200</ion-option>
+        <ion-option value="snes">$500</ion-option>
+      </ion-select>
+  </ion-list>
+  <!-- Brand -->
+  <ion-list style="padding-top:1em; color:#41c3c6;">
+      <ion-label style="display: inline; margin:0; float:left; padding-left: 2em" >Brand</ion-label>  
+      <ion-select [(ngModel)]="gaming" style="width: auto;padding:0; padding-right:2em; margin:0;float:right">
+        <ion-option value="nes" checked="true">NES</ion-option>
+        <ion-option value="n64">Nintendo64</ion-option>
+        <ion-option value="ps">PlayStation</ion-option>
+        <ion-option value="genesis">Sega Genesis</ion-option>
+        <ion-option value="saturn">Sega Saturn</ion-option>
+        <ion-option value="snes">SNES</ion-option>
+      </ion-select>
+  </ion-list>
+  <!-- Transmission -->
+  <ion-list style="padding-top:1em; color:#41c3c6;">
+      <ion-label style="display: inline; margin:0; float:left; padding-left: 2em" >Gaming</ion-label>  
+      <ion-select [(ngModel)]="gaming" style="width: auto;padding:0; padding-right:2em; margin:0;float:right">
+        <ion-option value="nes" checked="true">NES</ion-option>
+        <ion-option value="n64">Nintendo64</ion-option>
+        <ion-option value="ps">PlayStation</ion-option>
+        <ion-option value="genesis">Sega Genesis</ion-option>
+        <ion-option value="saturn">Sega Saturn</ion-option>
+        <ion-option value="snes">SNES</ion-option>
+      </ion-select>
+  </ion-list>
+  <!-- Year -->
+  <ion-list style="padding-top:1em; color:#41c3c6;">
+      <ion-label style="display: inline; margin:0; float:left; padding-left: 2em" >Gaming</ion-label>  
+      <ion-select [(ngModel)]="gaming" style="width: auto;padding:0; padding-right:2em; margin:0;float:right">
+        <ion-option value="nes" checked="true">NES</ion-option>
+        <ion-option value="n64">Nintendo64</ion-option>
+        <ion-option value="ps">PlayStation</ion-option>
+        <ion-option value="genesis">Sega Genesis</ion-option>
+        <ion-option value="saturn">Sega Saturn</ion-option>
+        <ion-option value="snes">SNES</ion-option>
+      </ion-select>
+  </ion-list>
+  <!-- Passengers -->
+  <ion-list style="padding-top:1em; color:#41c3c6;">
+      <ion-label style="display: inline; margin:0; float:left; padding-left: 2em" >Passengers</ion-label>  
+      <ion-select [(ngModel)]="gaming" style="width: auto;padding:0; padding-right:2em; margin:0;float:right">
+        <ion-option value="nes" checked="true">NES</ion-option>
+        <ion-option value="n64">Nintendo64</ion-option>
+        <ion-option value="ps">PlayStation</ion-option>
+        <ion-option value="genesis">Sega Genesis</ion-option>
+        <ion-option value="saturn">Sega Saturn</ion-option>
+        <ion-option value="snes">SNES</ion-option>
+      </ion-select>
+  </ion-list>
+  <!-- Exterior Color -->
+  <ion-list style="padding-top:1em; color:#41c3c6;">
+      <ion-label style="display: inline; margin:0; float:left; padding-left: 2em" >Exterior Color</ion-label>  
+      <ion-select [(ngModel)]="gaming" style="width: auto;padding:0; padding-right:2em; margin:0;float:right">
+        <ion-option value="nes" checked="true">NES</ion-option>
+        <ion-option value="n64">Nintendo64</ion-option>
+        <ion-option value="ps">PlayStation</ion-option>
+        <ion-option value="genesis">Sega Genesis</ion-option>
+        <ion-option value="saturn">Sega Saturn</ion-option>
+        <ion-option value="snes">SNES</ion-option>
+      </ion-select>
+  </ion-list>
+  <!-- Service -->
+  <ion-list style="padding-top:1em; color:#41c3c6;">
+      <ion-label style="display: inline; margin:0; float:left; padding-left: 2em" >Service</ion-label>  
+      <ion-select [(ngModel)]="gaming" style="width: auto;padding:0; padding-right:2em; margin:0;float:right">
+        <ion-option value="nes" checked="true">NES</ion-option>
+        <ion-option value="n64">Nintendo64</ion-option>
+        <ion-option value="ps">PlayStation</ion-option>
+        <ion-option value="genesis">Sega Genesis</ion-option>
+        <ion-option value="saturn">Sega Saturn</ion-option>
+        <ion-option value="snes">SNES</ion-option>
+      </ion-select>
+  </ion-list>
+</div>
+
+<!-- search button -->
+  <button 
+    block (click)="ok()" 
+    style="
+    position: absolute; bottom: 0; margin:0; border-radius:0; background: #15132a; height:4em; color:#41c3c6"
+  > 
+     Search
+  </button>
+</ion-content>
+

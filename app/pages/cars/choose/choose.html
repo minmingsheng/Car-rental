@@ -17,17 +17,11 @@
   </ion-buttons>
 </ion-navbar>
 
-<!-- cars -->
+<!-- Car list -->
 <ion-content style="background:url(build/img/subbg-52.jpg); background-size: cover;">
-  <div >
-    <ion-card (click)= "goToChooseCard(url)" class="card" *ngFor = "#url of imgUrls" style="position: relative; animation: slideIn 500ms 1 cubic-bezier(.6,.39,.53,1.25) backwards" >
-      <p style="
-      position: absolute; color:#fff; line-height: 6.7em; padding-left: 2em;text-shadow: 1px 1px 6px black">{{url.name}}</p>
-      <img src="{{url.url}}" alt="loading..." style="margin: 0;height:100%">
-    </ion-card>
-  </div>
+  Choose
   <button 
-    block (click)="goToFilter()" 
+    block (click)="pendding()" 
     style="
     position: absolute; bottom: 0; margin:0; border-radius:0; background: #15132a; height:4em; color:#41c3c6"
   > 

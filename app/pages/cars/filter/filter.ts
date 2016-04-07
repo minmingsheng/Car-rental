@@ -1,10 +1,8 @@
 import {Page, NavController} from 'ionic-angular';  
 import {rentIt} from '../rentIt/rentIt';
-import {Choose} from './choose/choose';
-import {Filter} from './filter/filter';
 
 @Page({
-    templateUrl: 'build/pages/cars/cars.html',
+    templateUrl: 'build/pages/cars/filter/filter.html',
     styles: [`
 		.card{
 			width:100;
@@ -48,7 +46,7 @@ import {Filter} from './filter/filter';
 		}
     `]
 })
-export class Cars {  
+export class Filter {  
 	public imgUrls=[
 		{url: "build/img/cars-47.jpg", name: "All Vehicles"},
 		{url: "build/img/cars-48.jpg", name: "Small to Full Size"},
@@ -69,9 +67,6 @@ export class Cars {
     }
     goToChooseCard(t){
     	console.log(t.name);
-    	this._NavController.push(Choose);
-    }
-    goToFilter(){
-    	this._NavController.push(Filter);
+    	
     }
 }
