@@ -39,6 +39,9 @@ import {rentIt} from '../rentIt/rentIt';
 			color:rgba(250, 250, 250, 1);
 			text-shadow: 1px 1px 5px black;
 		}
+		.item-inner{
+			border:none;!important;
+		}
 		@keyframes slideIn{
 			from{
 				transform: translate(-390px, 0);
@@ -46,7 +49,14 @@ import {rentIt} from '../rentIt/rentIt';
 		}
     `]
 })
-export class Filter {  
+export class Filter { 
+	 public Category;
+	 public PriceMax;
+	 public PriceMin;
+	 public Brand;
+	 public Transmission;
+	 public YearMax;
+	 public YearMin;
 	public imgUrls=[
 		{url: "build/img/cars-47.jpg", name: "All Vehicles"},
 		{url: "build/img/cars-48.jpg", name: "Small to Full Size"},
@@ -57,6 +67,14 @@ export class Filter {
 	public myIcon;
     constructor(private _NavController: NavController) {
     	 this.myIcon = "logo-apple";
+    	 
+    	 setTimeout(()=>{
+    		 let borders = document.querySelectorAll(".item-inner")
+    		 console.log(borders);
+    		 for (var i = 0; i < borders.length; i++) {
+    		 	borders[i].style.border="none";
+    		 }
+    	 },100)
     }
 
     onFilter() {
