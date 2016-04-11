@@ -7,17 +7,20 @@ import {rentIt} from '../rentIt/rentIt';
 		.btn{
 			border-radius:0;
 			margin:0;
-			border:1px solid #5db5ba;
 			position:relative;
-			height:80px;
+			flex:1;
+			color:#41c3c6;
 		}
 		.toolbar{
 			height:700px!important;
 		}
 		.btns{
 			position: absolute;
+			height:21.5em;
 			bottom:0;
 			width:100%;
+			display:flex;
+			flex-direction:column;
 		}
 		.img{
 			width:100%;
@@ -36,4 +39,5 @@ export class Menu {
      goToRent() {
         this._NavController.push(rentIt);
     }
+
 }

@@ -1,4 +1,4 @@
-import {Page, NavController} from 'ionic-angular';  
+import {Page, NavController, NavParams} from 'ionic-angular';  
 import {rentIt} from '../rentIt/rentIt';
 import {Choose} from './choose/choose';
 import {Filter} from './filter/filter';
@@ -49,6 +49,7 @@ import {Filter} from './filter/filter';
     `]
 })
 export class Cars {  
+	public days;
 	public imgUrls=[
 		{url: "build/img/cars-47.jpg", name: "All Vehicles"},
 		{url: "build/img/cars-48.jpg", name: "Small to Full Size"},
@@ -57,8 +58,12 @@ export class Cars {
 		{url: "build/img/cars-51.jpg", name: "Trucks & Vans"}
 	]
 	public myIcon;
-    constructor(private _NavController: NavController) {
+    constructor(private _NavController: NavController, private navParams : NavParams ) {
     	 this.myIcon = "logo-apple";
+    	 if(navParams.get('days')){
+    	 	// alert(navParams.get('days'))
+    	 	this.days = navParams.get('days');
+    	 }
     }
 
     onFilter() {
@@ -69,7 +74,7 @@ export class Cars {
     }
     goToChooseCard(t){
     	console.log(t.name);
-    	this._NavController.push(Choose);
+    	this._NavController.push(Choose, {days: this.days});
     }
     goToFilter(){
     	this._NavController.push(Filter);

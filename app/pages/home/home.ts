@@ -6,12 +6,12 @@ import {SignIn} from '../SignIn/signIn';
     templateUrl: 'build/pages/home/home.html',
     styles: [`
     .logo{
-        margin:10em auto;
+        margin:13em auto;
         margin-bottom:0;
-        height:80px;
-        width:80px;
-        border:1px solid black;
+        height:auto;
+        width:100px;
     }
+
     .login-signup {
         margin:2em auto;
     }
@@ -24,7 +24,9 @@ import {SignIn} from '../SignIn/signIn';
     }
     .as-a-guest{
         width:82%;
-        margin-left:10%
+        margin-left:10%;
+        color:#44c5c8;
+        border-color:#44c5c8;
     }
   `]
 })

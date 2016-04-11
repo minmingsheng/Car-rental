@@ -1,0 +1,91 @@
+<!-- toolbar -->
+<ion-navbar *navbar hideBackButton  >
+  <ion-buttons start>
+    <button (click) = "back()" style="color:#44c5c8; padding-right: 1em; opacity: 0.7;">
+      <img src="build/img/backCar-54.png" alt="" style="width: 60%">
+    </button>
+  </ion-buttons>
+
+  <ion-title style="background:url(build/img/NavBarBg-53.jpg)">
+   <img src="build/img/zentalLogo-04.png" alt="loading.." style="width: 40%">
+  </ion-title>
+  <!-- <ion-label (click)="onDiscard()" end>Discard</ion-label> -->
+  <ion-buttons end>
+    <button style="color:#44c5c8; padding-right: 1em; opacity: 0.7;">
+      Discard
+    </button>
+  </ion-buttons>
+</ion-navbar>
+
+<!-- filter -->
+<ion-content style="background:url(build/img/subbg-52.jpg); background-size: cover;">
+  <button 
+    block (click)="onCredit()" 
+    style="
+    top: 0; margin:0; border-radius:0; background: #15132a; height:3em; color:#41c3c6;
+    border-width: 1px;
+    border-image: url(build/img/border-57.jpg) !important;
+    border-image-width: 3% 200% 3% 0% !important;
+    /*border-style: solid;*/
+    /*border-image-repeat: stretch !important;*/
+    "
+  > 
+    Add a credit or debet card
+  </button>
+  <div style="height: 23em; width: 100%; transition: all 400ms cubic-bezier(.17,.67,.72,1.21); padding-top: 1em; padding-bottom: 1em" [class.credit]="!credit">
+      <ion-input type="text" style="width: 90%; border:1px solid #15132a; margin: auto; padding-left: 1.3em"  placeholder="Name on card"></ion-input>
+      <ion-input type="text" style="width: 90%; border:1px solid #15132a; margin: auto; margin-top: 0.3em; padding-left: 1.3em" placeholder="Card number"></ion-input>
+     
+      <div style="width: 90%; height:3em; margin: auto; margin-top: 0.3em; display: flex;">
+          <ion-input type="text" style=" border: 1px solid #15132a; flex:1; padding-left: 1.3em" placeholder="Month"></ion-input>
+          <ion-input type="text" style=" border: 1px solid #15132a; flex:1;margin-left: 0.4em; padding-left: 1.3em" placeholder="Year"></ion-input>
+          <ion-input type="text" style=" border: 1px solid #15132a; flex:1;margin-left: 0.4em; padding-left: 1.3em" placeholder="CCV"></ion-input>
+      </div>
+      <div style="width: 90%; height:3em; margin: auto; margin-top: 0.3em; background: #15132a; color:#42bfc3;line-height: 3em; text-align: center;">
+        Add your card
+      </div>
+      <div style="width: 90%; height:7.5em; margin: auto; margin-top: 0.3em; overflow: scroll">
+        <!-- card info ngFor --> 
+        <div style=" width:100%; height: 3.4em; background: rgba(114, 117, 128, 0.5); margin: 0.3em 0; display: flex;position: relative; padding-left: 1em; color:rgba(0,0,0,0.8)" *ngFor = '#card of cards'>
+            <div style="width: 2em; height: 2em; background-size:cover;position: absolute;top:0;bottom: 0; margin: auto;"></div>
+            <div style=" flex:3; line-height: 3.4em; margin-left: 3em">
+              {{card.number}}
+            </div>          
+            <div style=" flex:2; line-height: 3.4em"> {{card.date}}</div>          
+            <div style=" flex:2; line-height: 3.4em">{{card.name}}</div>          
+            <div style=" flex:1; position: relative;">
+              <div style="width: 1em; height: 1em; border-radius: 50%; border:1px solid black; position: absolute; top:0; bottom: 0; left: 0;right:0; margin:auto"></div>
+            </div>          
+        </div>
+      </div>
+  </div>
+  <button 
+    block (click)="onGift()" 
+    style="
+    top: 0; margin:0; border-radius:0; background: #15132a; height:3em;color:#41c3c6;
+    border-width: 1px;
+    border-image: url(build/img/border-57.jpg) !important;
+    border-image-width: 3% 200% 3% 0% !important;
+    /*border-style: solid;*/
+    /*border-image-repeat: stretch !important;*/
+    "
+  > 
+    Promotion Code /Gift card
+  </button>
+   <div style="height: 10em; width: 100%;  transition: all 400ms cubic-bezier(.17,.67,.72,1.21)" [class.gift]="!gift">
+     
+   </div>
+  
+<!-- search button -->
+  <button 
+    block (click)="ok()" 
+    style="
+    position: absolute; bottom: 0; margin:0; border-radius:0; background: #15132a; height:4em; color:#41c3c6;
+    border-image: url(build/img/border-57.jpg)!important;
+    border-image-width: 3% 200% 3% 0%!important;
+    border-width: 1px;
+    "> 
+     Search
+  </button>
+</ion-content>
+

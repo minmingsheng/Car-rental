@@ -13,18 +13,29 @@ import {Menu} from '../menu/menu';
 	        margin-bottom:0;
 	        height:80px;
 	        width:80px;
-	        border:1px solid black;
     	}
 		.username{
 			width:80%;
 			margin:auto;
-
+			letter-spacing: 1px;			
+		}
+		::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+		  color: #44c5c8;
+		}
+		::-moz-placeholder { /* Firefox 19+ */
+		  color: #44c5c8;
+		}
+		:-ms-input-placeholder { /* IE 10+ */
+		  color: #44c5c8;
+		}
+		:-moz-placeholder { /* Firefox 18- */
+		  color: #44c5c8;
 		}
 		.password{
 			width:80%;
 			margin:auto;
-
-			border-bottom:1px solid rgba(200, 199, 204, 1)!important;
+			letter-spacing: 1px;
+			
 		}
   `]
 })

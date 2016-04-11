@@ -47,6 +47,9 @@ import {rentIt} from '../rentIt/rentIt';
 				transform: translate(-390px, 0);
 			}
 		}
+		.checkBg{
+			background:#44c5c8;
+		}
     `]
 })
 export class Filter { 
@@ -57,6 +60,7 @@ export class Filter {
 	 public Transmission;
 	 public YearMax;
 	 public YearMin;
+	 public check = false;
 	public imgUrls=[
 		{url: "build/img/cars-47.jpg", name: "All Vehicles"},
 		{url: "build/img/cars-48.jpg", name: "Small to Full Size"},
@@ -85,6 +89,24 @@ export class Filter {
     }
     goToChooseCard(t){
     	console.log(t.name);
+    	
+    }
+    onPageDidEnter(){
+    	let _this  =this;
+    	console.log(document.querySelectorAll(".service"));
+    	let services = document.querySelectorAll(".service");
+    	for (var i = 0; i < services.length; i++) {
+    		services[i].addEventListener("touchstart", function(){
+    			console.log(this.children[1]);
+    			if(_this.check){
+    				this.children[1].style.background = ""
+    				_this.check = false;
+    			}else{
+    				this.children[1].style.background = "#44c5c8"
+    				_this.check = true;
+    			}
+    		})
+    	}
     	
     }
 }

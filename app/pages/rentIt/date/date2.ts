@@ -113,7 +113,7 @@ export class Date2 {
     	let that = this;
     	
     		for (var i = 0; i < tds.length; ++i) {
-    			tds[i].addEventListener("click", function(){
+    			tds[i].addEventListener("touchstart", function(){
     				console.log(that.pickPermision);
     				if(that.pick && that.pickPermision){
     					clearColor(that.returnB, that.pickB);

@@ -1,0 +1,75 @@
+<!-- toolbar -->
+<ion-navbar *navbar hideBackButton  style="
+    border-width: 1px;
+    border-image: url(build/img/border-57.jpg) !important;
+    border-image-width: 3% 200% 3% 0% !important;
+">
+  <ion-buttons start>
+    <button (click) = "back()" style="color:#44c5c8; padding-right: 1em; opacity: 0.7;">
+      <img src="build/img/backCar-54.png" alt="" style="width: 60%">
+    </button>
+  </ion-buttons>
+
+  <ion-title style="background:url(build/img/NavBarBg-53.jpg)">
+   <img src="build/img/zentalLogo-04.png" alt="loading.." style="width: 40%">
+  </ion-title>
+  <!-- <ion-label (click)="onDiscard()" end>Discard</ion-label> -->
+  <ion-buttons end>
+    <button style="color:#44c5c8; padding-right: 1em; opacity: 0.7;">
+      Discard
+    </button>
+  </ion-buttons>
+</ion-navbar>
+
+<!-- Car list -->
+<ion-content style="background:url(build/img/subbg-52.jpg); background-size: cover;">
+  
+  <div style="display: flex; width: 100%; height: 100%; flex-direction: column;">
+
+
+    <!-- car silder -->
+    <div style="flex: 3.3; background: #15132a;" >
+      <ion-slides pager (change)="onSlideChanged()" >
+           <ion-slide *ngFor = "#src of cars">
+              <!-- imgs -->
+             <div style="width: 9em; margin:auto; height:13em; position: relative; background: url(build/img/carBg-70.png) no-repeat; background-position: center 0; background-size: 70% 62%;">
+                <p style="color:white; margin-top:1.5em; font-size:0.9em; text-align: left; padding-top:0.5em; padding-left:40px; margin-bottom: 0">{{src.name}}</p>
+                <p style="color:white; font-size:0.7em; margin:0; padding-top: 0em; text-align: left; padding-left:40px; padding-bottom: 0;">{{src.nick}}</p>
+               <img src={{src.url}} alt="" style="margin-top: 0em; width: 300px; transform: translate(0,-0.5em);">
+               <p style="color:#42bfc3; margin:0; padding-top: 0.6em; text-align: left; padding-left: 30px; padding-bottom: 0; font-size:0.6em; transform: translate(0,-1.6em); transform: translate(0,-3.2em);" class="carP">{{src.price}} CAD / Day</p>
+               <p style="color:white; margin:0; padding-top: 0em; text-align: left; padding-left: 30px; padding-bottom: 0; font-size:0.7em; transform: translate(0,-1.6em);">{{src.transmistion}}</p>
+               <p style="color:white; margin:0; padding-top: 0; text-align: left; padding-left: 30px; padding-bottom: 0; font-size:0.7em; transform: translate(0,-1.6em);">{{src.service}}</p>
+             </div>
+           </ion-slide>
+         </ion-slides>
+    </div>
+    <!-- Covarage -->
+    <div style="flex: 4; background: 0.769, 0.784, 0.827;" >
+      <h6 style="padding-top: 0.5em; margin:0; text-align: center">Protection / Coverages</h6>
+      <div class="info" *ngFor = "#coverage of coverages" style="display: flex; padding-left:1em;padding-right:1.3em;margin-top: 1.4em;" >
+        <div style="flex:7">
+         {{coverage.name}}
+        </div>
+        <!-- check -->
+        <div style=" border:1px solid #15132a; height:1em;flex:0.5; margin-right: 0.5em;">
+        </div>
+        <div style="flex:4; text-align: right">
+          {{coverage.price}} CAD/DAY
+        </div>
+      </div><!-- end of ngfor -->
+  
+      <p style="text-align: right; padding: 0 1em 0 1em; margin-top: 0;"> {{days}} DAYS</p>
+      <div style="display: flex; padding:0 1em 1em 1em">
+        <div style="flex:1; text-align: left"><b>Estimated Total(CAD)</b></div>
+        <div style="flex:1; text-align: right"><b>{{total}} CAD</b></div>
+      </div>
+    </div>
+    <!-- buttons -->
+    <div style="flex: 1; display: flex;" >
+        <div style="flex:1; background: #868892"><p style="text-align: center; line-height:1.7em; font-size: 1.2em" (touchend)= "onPreserve()">Preserve</p></div>
+        <div style="flex:1; background: #15132a"><p style="text-align: center; line-height:1.7em; font-size: 1.2em; color: #42bfc3" (touchend)= "onPay()">Pay now</p></div>
+    </div>
+  </div>
+
+</ion-content>
+

@@ -19,6 +19,7 @@ import {Menu} from '../../menu/menu';
    			font-family: "roboto"!importnat;
    			font-weight:light!important;
    			text-align:center!important;
+            background:#5a5a6b;
     	}
     	.tabs{
     		display: flex;
@@ -38,8 +39,14 @@ import {Menu} from '../../menu/menu';
     		border-bottom:1px solid #518ef5;
     	}
     	.recent-card .card-info{
-    		flex:4;
-    	}
+            flex:4;
+            background:rgba(188, 189, 191, 0.5);
+        
+        }
+        .recent-card:nth-child(2n) .card-info{
+            background:rgba(176, 177, 180, 0.5);
+        }
+
     	.recent-card .card-info .name{
     		margin-bottom:0!important;
     		padding-bottom:0!important;
