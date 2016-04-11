@@ -9,6 +9,10 @@ import {Pay} from '../pay/pay';
     `]
 })
 export class chooseResult {  
+	public option = {
+		autoplay: 111
+	}
+	
 	public coverages = [
 		{
 			name: "Loss Damage Waiver(LDW)",
@@ -29,6 +33,7 @@ export class chooseResult {
 	];
 	public cars = [
 		{
+		id:1,
 		url: "build/img/cars/1.png",
 		name:"Audi A5",
 		nick:"Cabiolet",
@@ -37,6 +42,7 @@ export class chooseResult {
 		transmistion: "Automatic"
 		},
 		{
+		id:2,
 		url: "build/img/cars/2.png",
 		name:"JAOSn A5",
 		nick:"asdas",
@@ -45,6 +51,7 @@ export class chooseResult {
 		transmistion: "Automatic"
 		},
 		{
+		id:3,
 		url: "build/img/cars/3.png",
 		name:"BWM A5",
 		nick:"eadadt",
@@ -53,6 +60,7 @@ export class chooseResult {
 		transmistion: "asdada"
 		},
 		{
+		id:4,
 		url: "build/img/cars/4.png",
 		name:"adadsa A5",
 		nick:"adasdaa",
@@ -61,6 +69,7 @@ export class chooseResult {
 		transmistion: "232das"
 		},
 		{
+		id:5,
 		url: "build/img/cars/5.png",
 		name:"adad1 A5",
 		nick:"fsf",
@@ -69,6 +78,7 @@ export class chooseResult {
 		transmistion: "adasd"
 		},
 		{
+		id:7,
 		url: "build/img/cars/6.png",
 		name:"aaaa A5",
 		nick:"ss",
@@ -77,6 +87,7 @@ export class chooseResult {
 		transmistion: "ssss"
 		},
 		{
+		id:8,
 		url: "build/img/cars/7.png",
 		name:"fghjkl A5",
 		nick:"jjj",
@@ -93,7 +104,10 @@ export class chooseResult {
     	this.sumup();
     	if(navParams.get("days")){
     		// alert(navParams.get("days"));
-    		this.days = navParams.get("days");
+    		this.days = navParams.get("days").toFixed(0);
+    	}
+    	if(navParams.get("id")){
+    		console.log(navParams.get("id"))
     	}
     }
     sumup(){

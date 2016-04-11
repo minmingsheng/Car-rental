@@ -3,7 +3,7 @@
   border-image: url(build/img/border-57.jpg) !important;
   border-image-width: 3% 200% 3% 0% !important;*/">
   <ion-buttons start>
-    <button (click) = "back()" style="color:#44c5c8; padding-right: 1em; opacity: 0.7;">
+    <button (touchend) = "back()" style="color:#44c5c8; padding-right: 1em; opacity: 0.7;">
       <img src="build/img/backCar-54.png" alt="" style="width: 60%">
     </button>
   </ion-buttons>
@@ -16,10 +16,11 @@
 <ion-content>
   <div class="content">
         <div class="mapr" >
-          <p style="text-align: center; line-height: 200px">Loading...</p>
+          <!-- <p style="text-align: center; line-height: 200px">Loading...</p> -->
+          <img src="build/img/load.gif" style="display: block; width:60%; margin:30% auto">
         </div>
         <div class="btns">
-            <button class="btn" block (click)="goToLocation()">
+            <button class="btn" block (touchend)="goToLocation()">
                 <ion-card class="card" [class.cardbg]="basicInfo.pickUpLocaton">
                     <span *ngIf = "basicInfo.pickUpLocaton"  class="wordColor">
                       <p class="b">Pick-up location: </p>
@@ -30,7 +31,7 @@
                     </span>
                 </ion-card>
             </button>
-            <button class="btn" block (click)="goToLocation2()">
+            <button class="btn" block (touchend)="goToLocation2()">
                 <ion-card class="card" [class.cardbg]="basicInfo.returnLocaton">
                     <span *ngIf = "basicInfo.returnLocaton"  class="wordColor">
                       <p class="b">Return location: </p>
@@ -41,7 +42,7 @@
                     </span>
                 </ion-card>
             </button>
-            <button class="btn" block  (click)="goDate1()">
+            <button class="btn" block  (touchend)="goDate1()">
               <ion-card class="card" [class.cardbg]="basicInfo.pickUpDate">
                   <span *ngIf="basicInfo.pickUpDate" class="wordColor">
                     <p class="b">Pick-up date: </p>
@@ -52,7 +53,7 @@
                   </span>
               </ion-card>
             </button>
-            <button class="btn" block (click)="goDate2()">
+            <button class="btn" block (touchend)="goDate2()">
               <ion-card class="card" [class.cardbg]="basicInfo.returnDate">
                   <span *ngIf="basicInfo.returnDate"  class="wordColor">
                     <p class="b">Return date: </p>
@@ -63,7 +64,7 @@
                   </span>
               </ion-card>
             </button>
-            <button class="continue-btn" block (click)="onContinue()" [class.continueC]="continue" 
+            <button class="continue-btn" block (touchend)="onContinue()" [class.continueC]="continue" 
               style="
                 border-width: 1px;
                 border-image: url(build/img/border-57.jpg) !important;

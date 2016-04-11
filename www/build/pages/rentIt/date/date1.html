@@ -1,41 +1,40 @@
-<ion-navbar *navbar hideBackButton>
-	<ion-buttons start>
-	   <button (click)="backToRentIt()">
-	     <ion-icon name="md-arrow-round-back"></ion-icon>
-	   </button>
-	 </ion-buttons>
-  <ion-title>
-    Date1
+<ion-navbar *navbar hideBackButton   style="
+ /* border-width: 1px;
+  border-image: url(build/img/border-57.jpg) !important;
+  border-image-width: 3% 200% 3% 0% !important;*/">
+  <ion-buttons start>
+    <button (touchend) = "backToRentIt()" style="color:#44c5c8; padding-right: 1em; opacity: 0.7;">
+      <img src="build/img/backCar-54.png" alt="" style="width: 60%">
+    </button>
+  </ion-buttons>
+
+  <ion-title style="background:url(build/img/NavBarBg-53.jpg)">
+   <img src="build/img/zentalLogo-04.png" alt="loading.." style="width: 40%">
   </ion-title>
-	<!-- <ion-label (click)="onDiscard()" end>Discard</ion-label> -->
-	<ion-buttons end>
-	  <button (click)="onDiscard()">
-	    Discard
-	  </button>
-	</ion-buttons>
+  
 </ion-navbar>
-<ion-content>
-	<div class="tabs">
-		<ion-card class="card"  [class.bg]="pick" (click)= "activePick()">
-		  <ion-card-header [class.bg]="pick">
+<ion-content  style="background:url(build/img/subbg-52.jpg); background-size: cover;" >
+	<div class="tabs" >
+		<ion-card class="card"  [class.bg]="pick" (touchend)= "activePick()" >
+		  <ion-card-header [class.bgw]="pick" style="color:#4b717a">
 		    Pick-up Date
 		    <p class="p">{{date1}}</p>
 		  </ion-card-header>
 		</ion-card>
-		<ion-card class="card" (click)= "activeReturn()" [class.bg]="returnD">
-		  <ion-card-header [class.bg]="returnD">
+		<ion-card class="card" (touchend)= "activeReturn()" [class.bg]="returnD">
+		  <ion-card-header [class.bgw]="returnD" style="color:#4b717a">
 		    Return Date
 		    <p class="p">{{date2}}</p>
 		  </ion-card-header>
 		</ion-card>
 	</div>
-	<div class="calendar">
-		<ion-card *ngFor = "#month of months">
-		  <ion-card-header class="calender-title months">
+	<div class="calendar" >
+		<ion-card *ngFor = "#month of months" style="background: transparent !important; width: 100%; margin:0">
+		  <ion-card-header class="calender-title months" >
 		    {{month}}
 		  </ion-card-header>
-		  <ion-card-content  class="days">
-		    <table>
+		  <ion-card-content  class="days" >
+		    <table >
 			  <tr>
 			    <td>Su</td>
 			    <td>Mo</td>		
@@ -47,7 +46,7 @@
 			  </tr>
 			 </table>
 		  </ion-card-content >
-		  <ion-card-content >
+		  <ion-card-content style="background: rgba(255,255,255,0.4) !important;">
 			<table class="d">
 			  <tr>
 			    <td></td>

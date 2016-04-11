@@ -7,70 +7,77 @@ import {rentIt} from '../rentIt';
 @Page({
     templateUrl: 'build/pages/rentIt/date/date1.html',
     styles: [`
-    	.discard{
-    		color:#387ef5!important;
-    	}
-    	.card{
-   			width:30%!important;
-   			margin:0;
-   			flex:1;
-   			border-radius: 0;
-   			height:5.9em!important;
-   			line-height:3em;
-   			font-family: "roboto"!importnat;
-   			font-weight:light!important;
-   			text-align:center!important;
-    	}
-    	.tabs{
-    		display: flex;
-    		width:100%!important;
-    		padding:0;
-    	}
-    	
-    	.bg{
-    		background:#171230!important;
-    		color:#ffffff!important;
-    		border-bottom: 2px solid #46c1c6;
-    	}
-    	.p{
-			line-height:0;
-    	}
-    	.calender-title{
-    		width:100%;
-    		height:1.8em;
-    		margin:0;
-    		padding:0;
-    		text-align:center;
-    	}
-    	.months{
+        .discard{
+            color:#387ef5!important;
+        }
+        .card{
+            width:30%!important;
+            margin:0;
+            flex:1;
+            border-radius: 0;
+            height:5.9em!important;
+            line-height:3em;
+            font-family: "roboto"!importnat;
+            font-weight:light!important;
+            text-align:center!important;
+            background:rgb(60, 57, 74);
+           
+        }
+        .tabs{
+            display: flex;
+            width:100%!important;
+            padding:0;
+        }
+        
+        .bg{
+            background:#171230!important;
 
-    		background:#14102c;
-    		line-height:1.8em;
-    		color:#45bdc1;
-    	}
-    	.days{
-    		height:1.8em;
-    		margin:0;
-    		padding:0;
-    		text-align:center;
-    		background:#97959f;
-    		padding-left:1em;
-    		padding-right:1.5em;
-    	}
-    	table{
-    		width:100%;
-    		margin:0;
-    		text-align:center;
-    	}
-    	tr{
-    		margin-top:1em;
-    	}
-    	.calendar{
-    		width:100%;
-    		height:38.5em;
-    		overflow:scroll;
-    	}
-		
+            border-bottom: 2px solid #46c1c6;
+        }
+        .bgw{
+            color:rgb(66, 191, 195)!important;
+        }
+        .p{
+            line-height:0;
+            color:#fff;
+            opacity:0.7;
+        }
+        .calender-title{
+            width:100%;
+            height:1.8em;
+            margin:0;
+            padding:0;
+            text-align:center;
+        }
+        .months{
+
+            background:#14102c;
+            line-height:1.8em;
+            color:#45bdc1;
+        }
+        .days{
+            height:1.8em;
+            margin:0;
+            padding:0;
+            text-align:center;
+            background:rgb(140, 144, 157);
+            padding-left:1em;
+            padding-right:1.5em;
+        }
+        table{
+            width:100%;
+            margin:0;
+            text-align:center;
+        }
+        tr{
+            margin-top:1em;
+        }
+        .calendar{
+            width:100%;
+            height:38.5em;
+            overflow:scroll;
+        }
+        
   `],
    providers: [generalService]
 })

@@ -142,6 +142,71 @@ var Choose = (function () {
             { url: "build/img/cars-50.jpg", name: "SUVs & Wagons" },
             { url: "build/img/cars-51.jpg", name: "Trucks & Vans" }
         ];
+        this.cars = [
+            {
+                id: 1,
+                url: "build/img/cars/1.png",
+                name: "Audi A5",
+                nick: "Cabiolet",
+                price: 114.00,
+                service: "GPS",
+                transmistion: "Automatic"
+            },
+            {
+                id: 2,
+                url: "build/img/cars/2.png",
+                name: "JAOSn A5",
+                nick: "asdas",
+                price: 12.00,
+                service: "afdafsa",
+                transmistion: "Automatic"
+            },
+            {
+                id: 3,
+                url: "build/img/cars/3.png",
+                name: "BWM A5",
+                nick: "eadadt",
+                price: 331.00,
+                service: "GPS",
+                transmistion: "asdada"
+            },
+            {
+                id: 4,
+                url: "build/img/cars/4.png",
+                name: "adadsa A5",
+                nick: "adasdaa",
+                price: 54.00,
+                service: "dfgd",
+                transmistion: "232das"
+            },
+            {
+                id: 5,
+                url: "build/img/cars/5.png",
+                name: "adad1 A5",
+                nick: "fsf",
+                price: 114.00,
+                service: "GPdShd",
+                transmistion: "adasd"
+            },
+            {
+                id: 7,
+                url: "build/img/cars/6.png",
+                name: "aaaa A5",
+                nick: "ss",
+                price: 114.00,
+                service: "GPS",
+                transmistion: "ssss"
+            },
+            {
+                id: 8,
+                url: "build/img/cars/7.png",
+                name: "fghjkl A5",
+                nick: "jjj",
+                price: 114.00,
+                service: "GPS",
+                transmistion: "ffff"
+            }
+        ];
         this.myIcon = "logo-apple";
         if (navParams.get("days")) {
             // alert(navParams.get("days"));
@@ -154,7 +219,8 @@ var Choose = (function () {
         this._NavController.pop();
     };
     Choose.prototype.goToChooseResult = function (t) {
-        this._NavController.push(chooseResult_1.chooseResult, { days: this.days });
+        alert(t);
+        this._NavController.push(chooseResult_1.chooseResult, { days: this.days, id: t });
     };
     Choose = __decorate([
         ionic_angular_1.Page({
@@ -184,6 +250,9 @@ var chooseResult = (function () {
     function chooseResult(_NavController, navParams) {
         this._NavController = _NavController;
         this.navParams = navParams;
+        this.option = {
+            autoplay: 111
+        };
         this.coverages = [
             {
                 name: "Loss Damage Waiver(LDW)",
@@ -204,6 +273,7 @@ var chooseResult = (function () {
         ];
         this.cars = [
             {
+                id: 1,
                 url: "build/img/cars/1.png",
                 name: "Audi A5",
                 nick: "Cabiolet",
@@ -212,6 +282,7 @@ var chooseResult = (function () {
                 transmistion: "Automatic"
             },
             {
+                id: 2,
                 url: "build/img/cars/2.png",
                 name: "JAOSn A5",
                 nick: "asdas",
@@ -220,6 +291,7 @@ var chooseResult = (function () {
                 transmistion: "Automatic"
             },
             {
+                id: 3,
                 url: "build/img/cars/3.png",
                 name: "BWM A5",
                 nick: "eadadt",
@@ -228,6 +300,7 @@ var chooseResult = (function () {
                 transmistion: "asdada"
             },
             {
+                id: 4,
                 url: "build/img/cars/4.png",
                 name: "adadsa A5",
                 nick: "adasdaa",
@@ -236,6 +309,7 @@ var chooseResult = (function () {
                 transmistion: "232das"
             },
             {
+                id: 5,
                 url: "build/img/cars/5.png",
                 name: "adad1 A5",
                 nick: "fsf",
@@ -244,6 +318,7 @@ var chooseResult = (function () {
                 transmistion: "adasd"
             },
             {
+                id: 7,
                 url: "build/img/cars/6.png",
                 name: "aaaa A5",
                 nick: "ss",
@@ -252,6 +327,7 @@ var chooseResult = (function () {
                 transmistion: "ssss"
             },
             {
+                id: 8,
                 url: "build/img/cars/7.png",
                 name: "fghjkl A5",
                 nick: "jjj",
@@ -266,7 +342,10 @@ var chooseResult = (function () {
         this.sumup();
         if (navParams.get("days")) {
             // alert(navParams.get("days"));
-            this.days = navParams.get("days");
+            this.days = navParams.get("days").toFixed(0);
+        }
+        if (navParams.get("id")) {
+            console.log(navParams.get("id"));
         }
     }
     chooseResult.prototype.sumup = function () {
@@ -452,7 +531,7 @@ var Pay = (function () {
     Pay = __decorate([
         ionic_angular_1.Page({
             templateUrl: 'build/pages/cars/pay/pay.html',
-            styles: ["\n\t\t.credit{\n\t\t\theight: 0px!important;\n\t\t\topacity:0;\n\t\t\tpadding:0;\n\t\t}\n\t\t.gift{\n\t\t\theight: 1px!important;\n\t\t}\n\t\t::-webkit-input-placeholder {\n\t\t   color: #6e6e70;\n\t\t   font-size:1em;\n\t\t   letter-spacing: 0.6;\n\t\t}\n\n\t\t:-moz-placeholder { /* Firefox 18- */\n\t\t   color: #6e6e70;\n\t\t   font-size:1em;\n\t\t   letter-spacing: 0.6;  \n\t\t}\n\n\t\t::-moz-placeholder {  /* Firefox 19+ */\n\t\t   color: #6e6e70;\n\t\t   font-size:1em;\n\t\t   letter-spacing: 0.6;  \n\t\t}\n\n\t\t:-ms-input-placeholder {  \n\t\t   color: #6e6e70;\n\t\t   font-size:1em;\n\t\t   letter-spacing: 0.6;  \n\t\t}\n    "]
+            styles: ["\n\t\t.credit{\n\t\t\theight: 0px!important;\n\t\t\topacity:0;\n\t\t\tpadding:0;\n\t\t}\n\t\t.gift{\n\t\t\theight: 0px!important;\n\t\t\topacity:0;\n\t\t\tpadding:0;\n\t\t}\n\t\t::-webkit-input-placeholder {\n\t\t   color: #6e6e70;\n\t\t   font-size:1em;\n\t\t   letter-spacing: 0.6;\n\t\t}\n\n\t\t:-moz-placeholder { /* Firefox 18- */\n\t\t   color: #6e6e70;\n\t\t   font-size:1em;\n\t\t   letter-spacing: 0.6;  \n\t\t}\n\n\t\t::-moz-placeholder {  /* Firefox 19+ */\n\t\t   color: #6e6e70;\n\t\t   font-size:1em;\n\t\t   letter-spacing: 0.6;  \n\t\t}\n\n\t\t:-ms-input-placeholder {  \n\t\t   color: #6e6e70;\n\t\t   font-size:1em;\n\t\t   letter-spacing: 0.6;  \n\t\t}\n    "]
         }), 
         __metadata('design:paramtypes', [ionic_angular_1.NavController])
     ], Pay);
@@ -615,7 +694,7 @@ var Date1 = (function () {
     Date1 = __decorate([
         ionic_angular_1.Page({
             templateUrl: 'build/pages/rentIt/date/date1.html',
-            styles: ["\n    \t.discard{\n    \t\tcolor:#387ef5!important;\n    \t}\n    \t.card{\n   \t\t\twidth:30%!important;\n   \t\t\tmargin:0;\n   \t\t\tflex:1;\n   \t\t\tborder-radius: 0;\n   \t\t\theight:5.9em!important;\n   \t\t\tline-height:3em;\n   \t\t\tfont-family: \"roboto\"!importnat;\n   \t\t\tfont-weight:light!important;\n   \t\t\ttext-align:center!important;\n    \t}\n    \t.tabs{\n    \t\tdisplay: flex;\n    \t\twidth:100%!important;\n    \t\tpadding:0;\n    \t}\n    \t\n    \t.bg{\n    \t\tbackground:#171230!important;\n    \t\tcolor:#ffffff!important;\n    \t\tborder-bottom: 2px solid #46c1c6;\n    \t}\n    \t.p{\n\t\t\tline-height:0;\n    \t}\n    \t.calender-title{\n    \t\twidth:100%;\n    \t\theight:1.8em;\n    \t\tmargin:0;\n    \t\tpadding:0;\n    \t\ttext-align:center;\n    \t}\n    \t.months{\n\n    \t\tbackground:#14102c;\n    \t\tline-height:1.8em;\n    \t\tcolor:#45bdc1;\n    \t}\n    \t.days{\n    \t\theight:1.8em;\n    \t\tmargin:0;\n    \t\tpadding:0;\n    \t\ttext-align:center;\n    \t\tbackground:#97959f;\n    \t\tpadding-left:1em;\n    \t\tpadding-right:1.5em;\n    \t}\n    \ttable{\n    \t\twidth:100%;\n    \t\tmargin:0;\n    \t\ttext-align:center;\n    \t}\n    \ttr{\n    \t\tmargin-top:1em;\n    \t}\n    \t.calendar{\n    \t\twidth:100%;\n    \t\theight:38.5em;\n    \t\toverflow:scroll;\n    \t}\n\t\t\n  "],
+            styles: ["\n    \t.discard{\n    \t\tcolor:#387ef5!important;\n    \t}\n    \t.card{\n   \t\t\twidth:30%!important;\n   \t\t\tmargin:0;\n   \t\t\tflex:1;\n   \t\t\tborder-radius: 0;\n   \t\t\theight:5.9em!important;\n   \t\t\tline-height:3em;\n   \t\t\tfont-family: \"roboto\"!importnat;\n   \t\t\tfont-weight:light!important;\n   \t\t\ttext-align:center!important;\n            background:rgb(60, 57, 74);\n\n    \t}\n    \t.tabs{\n    \t\tdisplay: flex;\n    \t\twidth:100%!important;\n    \t\tpadding:0;\n    \t}\n    \t\n    \t.bg{\n    \t\tbackground:#171230!important;\n\n    \t\tborder-bottom: 2px solid #46c1c6;\n    \t}\n        .bgw{\n            color:rgb(66, 191, 195)!important;\n        }\n    \t.p{\n\t\t\tline-height:0;\n            color:#fff;\n            opacity:0.7;\n    \t}\n    \t.calender-title{\n    \t\twidth:100%;\n    \t\theight:1.8em;\n    \t\tmargin:0;\n    \t\tpadding:0;\n    \t\ttext-align:center;\n    \t}\n    \t.months{\n\n    \t\tbackground:#14102c;\n    \t\tline-height:1.8em;\n    \t\tcolor:#45bdc1;\n    \t}\n    \t.days{\n    \t\theight:1.8em;\n    \t\tmargin:0;\n    \t\tpadding:0;\n    \t\ttext-align:center;\n    \t\tbackground:rgb(140, 144, 157);\n    \t\tpadding-left:1em;\n    \t\tpadding-right:1.5em;\n    \t}\n    \ttable{\n    \t\twidth:100%;\n    \t\tmargin:0;\n    \t\ttext-align:center;\n    \t}\n    \ttr{\n    \t\tmargin-top:1em;\n    \t}\n    \t.calendar{\n    \t\twidth:100%;\n    \t\theight:38.5em;\n    \t\toverflow:scroll;\n    \t}\n\t\t\n  "],
             providers: [general_service_1.generalService]
         }), 
         __metadata('design:paramtypes', [ionic_angular_1.NavController, general_service_1.generalService])
@@ -712,7 +791,7 @@ var Date2 = (function () {
     Date2 = __decorate([
         ionic_angular_1.Page({
             templateUrl: 'build/pages/rentIt/date/date1.html',
-            styles: ["\n    \t.discard{\n    \t\tcolor:#387ef5!important;\n    \t}\n    \t.card{\n   \t\t\twidth:30%!important;\n   \t\t\tmargin:0;\n   \t\t\tflex:1;\n   \t\t\tborder-radius: 0;\n   \t\t\theight:5.9em!important;\n   \t\t\tline-height:3em;\n   \t\t\tfont-family: \"roboto\"!importnat;\n   \t\t\tfont-weight:light!important;\n   \t\t\ttext-align:center!important;\n    \t}\n    \t.tabs{\n    \t\tdisplay: flex;\n    \t\twidth:100%!important;\n    \t\tpadding:0;\n    \t}\n    \t\n    \t.bg{\n    \t\tbackground:#171230!important;\n    \t\tcolor:#ffffff!important;\n    \t\tborder-bottom: 2px solid #46c1c6;\n    \t}\n    \t.p{\n\t\t\tline-height:0;\n    \t}\n    \t.calender-title{\n    \t\twidth:100%;\n    \t\theight:1.8em;\n    \t\tmargin:0;\n    \t\tpadding:0;\n    \t\ttext-align:center;\n    \t}\n    \t.months{\n\n    \t\tbackground:#14102c;\n    \t\tline-height:1.8em;\n    \t\tcolor:#45bdc1;\n    \t}\n    \t.days{\n    \t\theight:1.8em;\n    \t\tmargin:0;\n    \t\tpadding:0;\n    \t\ttext-align:center;\n    \t\tbackground:#97959f;\n    \t\tpadding-left:1em;\n    \t\tpadding-right:1.5em;\n    \t}\n    \ttable{\n    \t\twidth:100%;\n    \t\tmargin:0;\n    \t\ttext-align:center;\n    \t}\n    \ttr{\n    \t\tmargin-top:1em;\n    \t}\n    \t.calendar{\n    \t\twidth:100%;\n    \t\theight:38.5em;\n    \t\toverflow:scroll;\n    \t}\n\t\t\n  "],
+            styles: ["\n        .discard{\n            color:#387ef5!important;\n        }\n        .card{\n            width:30%!important;\n            margin:0;\n            flex:1;\n            border-radius: 0;\n            height:5.9em!important;\n            line-height:3em;\n            font-family: \"roboto\"!importnat;\n            font-weight:light!important;\n            text-align:center!important;\n            background:rgb(60, 57, 74);\n           \n        }\n        .tabs{\n            display: flex;\n            width:100%!important;\n            padding:0;\n        }\n        \n        .bg{\n            background:#171230!important;\n\n            border-bottom: 2px solid #46c1c6;\n        }\n        .bgw{\n            color:rgb(66, 191, 195)!important;\n        }\n        .p{\n            line-height:0;\n            color:#fff;\n            opacity:0.7;\n        }\n        .calender-title{\n            width:100%;\n            height:1.8em;\n            margin:0;\n            padding:0;\n            text-align:center;\n        }\n        .months{\n\n            background:#14102c;\n            line-height:1.8em;\n            color:#45bdc1;\n        }\n        .days{\n            height:1.8em;\n            margin:0;\n            padding:0;\n            text-align:center;\n            background:rgb(140, 144, 157);\n            padding-left:1em;\n            padding-right:1.5em;\n        }\n        table{\n            width:100%;\n            margin:0;\n            text-align:center;\n        }\n        tr{\n            margin-top:1em;\n        }\n        .calendar{\n            width:100%;\n            height:38.5em;\n            overflow:scroll;\n        }\n        \n  "],
             providers: [general_service_1.generalService]
         }), 
         __metadata('design:paramtypes', [ionic_angular_1.NavController, general_service_1.generalService])
@@ -999,12 +1078,13 @@ var date1_1 = require('./date/date1');
 var date2_1 = require('./date/date2');
 var cars_1 = require('../cars/cars');
 var general_service_1 = require('../../services/general.service');
+var core_1 = require('angular2/core');
 var rentIt = (function () {
-    function rentIt(_navController, _generalService, navParams) {
-        var _this = this;
+    function rentIt(_navController, _generalService, navParams, elementRef) {
         this._navController = _navController;
         this._generalService = _generalService;
         this.navParams = navParams;
+        this.elementRef = elementRef;
         this.local = new ionic_angular_1.Storage(ionic_angular_1.LocalStorage);
         if (navParams.get('pickUpLocaton')) {
             this.local.set('pickUpLocaton', navParams.get('pickUpLocaton'));
@@ -1033,94 +1113,6 @@ var rentIt = (function () {
         else {
             this.continue = false;
         }
-        setTimeout(function () {
-            var mapDom = document.querySelector(".mapr");
-            console.log(mapDom);
-            var options = { timeout: 10000, enableHighAccuracy: true };
-            navigator.geolocation.getCurrentPosition(function (position) {
-                var latLng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
-                /*red style*/
-                // let styleArray = [{"featureType":"landscape","stylers":[{"visibility":"simplified"},{"color":"#2b3f57"},{"weight":0.1}]},{"featureType":"administrative","stylers":[{"visibility":"on"},{"hue":"#ff0000"},{"weight":0.4},{"color":"#ffffff"}]},{"featureType":"road.highway","elementType":"labels.text","stylers":[{"weight":1.3},{"color":"#FFFFFF"}]},{"featureType":"road.highway","elementType":"geometry","stylers":[{"color":"#f55f77"},{"weight":3}]},{"featureType":"road.arterial","elementType":"geometry","stylers":[{"color":"#f55f77"},{"weight":1.1}]},{"featureType":"road.local","elementType":"geometry","stylers":[{"color":"#f55f77"},{"weight":0.4}]},{},{"featureType":"road.highway","elementType":"labels","stylers":[{"weight":0.8},{"color":"#ffffff"},{"visibility":"on"}]},{"featureType":"road.local","elementType":"labels","stylers":[{"visibility":"off"}]},{"featureType":"road.arterial","elementType":"labels","stylers":[{"color":"#ffffff"},{"weight":0.7}]},{"featureType":"poi","elementType":"labels","stylers":[{"visibility":"off"}]},{"featureType":"poi","stylers":[{"color":"#6c5b7b"}]},{"featureType":"water","stylers":[{"color":"#f3b191"}]},{"featureType":"transit.line","stylers":[{"visibility":"on"}]}];
-                // let styleArray = [
-                // {
-                // 	"featureType":"road",
-                // 	"elementType":"geometry.fill",
-                // 	"stylers":[{"color":"#011066"}]
-                // },
-                // {
-                // 	"featureType":"road",
-                // 	"elementType":"geometry.stroke",
-                // 	"stylers":[{"visibility":"off"}]
-                // },
-                // {
-                // 	"featureType":"poi",
-                // 	"elementType":"geometry.fill",
-                // 	"stylers":[{"color":"#5580aa"}]
-                // },
-                // {
-                // 	"featureType":"landscape",
-                // 	"elementType":"geometry.fill",
-                // 	"stylers":[{"color":"#405783"}]
-                // },{
-                // 	"elementType":"labels.text",
-                // 	"stylers":[
-                // 		{"color":"#ffffff"},
-                // 		{"weight":0.5}]
-                // },
-                // {
-                // 	"elementType":"labels.icon",
-                // 	"stylers":[{"visibility":"off"}]
-                // },
-                // {
-                // 	"featureType":"water",
-                // 	"elementType":"geometry",
-                // 	"stylers":[{"color":"#27abda"}]
-                // },
-                // {
-                // 	"featureType":"transit",
-                // 	"elementType":"geometry",
-                // 	"stylers":[{"color":"#272664"}]
-                // }] ;
-                var styleArray = [
-                    {
-                        featureType: "all",
-                        stylers: [
-                            { saturation: -80 }
-                        ]
-                    }, {
-                        featureType: "road.arterial",
-                        elementType: "geometry",
-                        stylers: [
-                            { hue: "#00ffee" },
-                            { saturation: 50 }
-                        ]
-                    }, {
-                        featureType: "poi.business",
-                        elementType: "labels",
-                        stylers: [
-                            { visibility: "off" }
-                        ]
-                    }
-                ];
-                var mapOptions = {
-                    center: latLng,
-                    styles: styleArray,
-                    zoom: 15,
-                    mapTypeId: google.maps.MapTypeId.ROADMAP
-                };
-                _this.map = new google.maps.Map(document.querySelector(".mapr"), mapOptions);
-                var marker = new google.maps.Marker({
-                    scrollwheel: false,
-                    map: _this.map,
-                    animation: google.maps.Animation.DROP,
-                    position: _this.map.getCenter()
-                });
-                var content = "<h4>Information!</h4>";
-                _this.addInfoWindow(marker, content);
-            }, function (error) {
-                console.log(error);
-            }, options);
-        }, 100);
         this.getTime();
     }
     rentIt.prototype.getTime = function () {
@@ -1175,19 +1167,70 @@ var rentIt = (function () {
     rentIt.prototype.back = function () {
         this._navController.pop();
     };
+    rentIt.prototype.onPageDidEnter = function () {
+        var _this = this;
+        setTimeout(function () {
+            // console.log("elementRef.nativeElement: ",this.elementRef.nativeElement.querySelector(".mapr"));
+            // let mapDom = document.querySelector(".mapr");
+            var mapDom = _this.elementRef.nativeElement.querySelector(".mapr");
+            console.log("mapDom", mapDom);
+            var options = { timeout: 10000, enableHighAccuracy: true };
+            navigator.geolocation.getCurrentPosition(function (position) {
+                var latLng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+                var styleArray = [
+                    {
+                        featureType: "all",
+                        stylers: [
+                            { saturation: -80 }
+                        ]
+                    }, {
+                        featureType: "road.arterial",
+                        elementType: "geometry",
+                        stylers: [
+                            { hue: "#00ffee" },
+                            { saturation: 50 }
+                        ]
+                    }, {
+                        featureType: "poi.business",
+                        elementType: "labels",
+                        stylers: [
+                            { visibility: "off" }
+                        ]
+                    }
+                ];
+                var mapOptions = {
+                    center: latLng,
+                    styles: styleArray,
+                    zoom: 15,
+                    mapTypeId: google.maps.MapTypeId.ROADMAP
+                };
+                _this.map = new google.maps.Map(mapDom, mapOptions);
+                var marker = new google.maps.Marker({
+                    scrollwheel: false,
+                    map: _this.map,
+                    animation: google.maps.Animation.DROP,
+                    position: _this.map.getCenter()
+                });
+                var content = "<h4>Information!</h4>";
+                _this.addInfoWindow(marker, content);
+            }, function (error) {
+                console.log(error);
+            }, options);
+        }, 100);
+    };
     rentIt = __decorate([
         ionic_angular_1.Page({
             templateUrl: 'build/pages/rentIt/rentIt.html',
-            styles: ["\n\t\t.content{\n\t\t\twidth: 100%;\n\t\t\theight:100%;\n\t\t\tbackground:#5f97f7;\n\t\t\t\n\t\t}\n\t\t.mapr{\n\t\t\tposition:absolute;\n\t\t\ttop:0;\n\t\t\twidth:100%;\n\t\t\theight:22.3em;\n\t\t\tbackground:#c5c6c5;\n\t\t}\n\t\t.btns{\n\t\t\tposition: absolute;\n\t\t\tbottom:0;\n\t\t\twidth:100%;\n\t\t}\n\t\t.btn,.continue-btn{\n\t\t\tborder-radius:0;\n\t\t\tmargin:0;\n\t\t\tposition:relative;\n\t\t\theight:60px;\n\t\t}\n\t\t.btn{\n\t\t\tpadding-top:0.8em;\n\t\t}\n\t\t.btn:first-child{\n\t\t\tbackground: #636170!important;\n\t\t}\n\t\t.btn:nth-child(2){\n\t\t\tbackground: #545265!important;\n\t\t}\n\t\t.btn:nth-child(3){\n\t\t\tbackground: #413f52!important;\n\t\t}\n\t\t.btn:nth-child(4){\n\t\t\tbackground: #2a283d!important;\n\t\t}\n\t\t.continue-btn{\n\t\t\tcolor:rgba(225,225,225,0.4);\n\t\t\theight:70px;\n\t\t\tbackground:#171230!important;\n\t\t}\n\t\t.continueC{\n\t\t\tcolor:rgba(68, 197, 200, 1);\n\t\t\tanimation: showup 1s 1 ease;\n\t\t}\n\t\t@keyframes showup{\n\t\t\tfrom{\n\t\t\t\tcolor:rgba(68, 197, 200, 0);\n\t\t\t\tfont-size: 0.4em;\n\t\t\t}\n\t\t\t70%{\n\t\t\t\tcolor:rgba(68, 197, 200, 0.4);\n\t\t\t\tfont-size: 1.2em;\n\t\t\t}\n\n\t\t}\n\t\t.card{\n\t\t\theight:75%!important;\n\t\t\twidth:90%!important;\n\t\t\tborder-radius:0;\n\t\t\tbackground:#a8a5ae;\n\t\t\tmargin:auto;\n\t\t\tmargin-top:0;\n\t\t\tposition:relative;\n\t\t\toverflow: visible!important;\n\t\t\tline-height:2.3em;\n\t\t\ttext-align:left;\n\t\t\tpadding-left:1.3em;\n\t\t}\n\t\t.cardbg{\n\t\t\tbackground:transparent;\n\t\t}\n\t\t.wordColor{\n\t\t\tcolor:rgba(250, 250, 250, 0.66)!important;\n\n\t\t}\n\t\t.card::before{\n\t\t\tposition:absolute !important;\n\t\t\tcontent:\"  \";\n\t\t\theight:100%;\n\t\t\twidth:3px;\n\t\t\tleft:-0.4em;\n\t\t\tborder-left: 0.15em solid #44c5c8;\n\t\t}\n\t\tspan{\n\t\t\tcolor:rgb(77, 77, 91)!important;\n\t\t}\n\t\t.b{\n\t\t\tcolor:#44c5c8;\n\t\t\tdisplay:inline;\n\t\t}\n\n  "],
+            styles: ["\n\t\t.content{\n\t\t\twidth: 100%;\n\t\t\theight:100%;\n\t\t\tbackground:#5f97f7;\n\t\t\t\n\t\t}\n\t\t.mapr{\n\t\t\tposition:absolute;\n\t\t\ttop:0;\n\t\t\twidth:100%;\n\t\t\theight:22.3em;\n\t\t\tbackground:#ffffff;\n\t\t}\n\t\t.btns{\n\t\t\tposition: absolute;\n\t\t\tbottom:0;\n\t\t\twidth:100%;\n\t\t}\n\t\t.btn,.continue-btn{\n\t\t\tborder-radius:0;\n\t\t\tmargin:0;\n\t\t\tposition:relative;\n\t\t\theight:60px;\n\t\t}\n\t\t.btn{\n\t\t\tpadding-top:0.8em;\n\t\t}\n\t\t.btn:first-child{\n\t\t\tbackground: #636170!important;\n\t\t}\n\t\t.btn:nth-child(2){\n\t\t\tbackground: #545265!important;\n\t\t}\n\t\t.btn:nth-child(3){\n\t\t\tbackground: #413f52!important;\n\t\t}\n\t\t.btn:nth-child(4){\n\t\t\tbackground: #2a283d!important;\n\t\t}\n\t\t.continue-btn{\n\t\t\tcolor:rgba(225,225,225,0.4);\n\t\t\theight:70px;\n\t\t\tbackground:#171230!important;\n\t\t}\n\t\t.continueC{\n\t\t\tcolor:rgba(68, 197, 200, 1);\n\t\t\tanimation: showup 1s 1 ease;\n\t\t}\n\t\t@keyframes showup{\n\t\t\tfrom{\n\t\t\t\tcolor:rgba(68, 197, 200, 0);\n\t\t\t\tfont-size: 0.4em;\n\t\t\t}\n\t\t\t70%{\n\t\t\t\tcolor:rgba(68, 197, 200, 0.4);\n\t\t\t\tfont-size: 1.2em;\n\t\t\t}\n\n\t\t}\n\t\t.card{\n\t\t\theight:75%!important;\n\t\t\twidth:90%!important;\n\t\t\tborder-radius:0;\n\t\t\tbackground:#a8a5ae;\n\t\t\tmargin:auto;\n\t\t\tmargin-top:0;\n\t\t\tposition:relative;\n\t\t\toverflow: visible!important;\n\t\t\tline-height:2.3em;\n\t\t\ttext-align:left;\n\t\t\tpadding-left:1.3em;\n\t\t}\n\t\t.cardbg{\n\t\t\tbackground:transparent;\n\t\t}\n\t\t.wordColor{\n\t\t\tcolor:rgba(250, 250, 250, 0.66)!important;\n\n\t\t}\n\t\t.card::before{\n\t\t\tposition:absolute !important;\n\t\t\tcontent:\"  \";\n\t\t\theight:100%;\n\t\t\twidth:3px;\n\t\t\tleft:-0.4em;\n\t\t\tborder-left: 0.15em solid #44c5c8;\n\t\t}\n\t\tspan{\n\t\t\tcolor:rgb(77, 77, 91)!important;\n\t\t}\n\t\t.b{\n\t\t\tcolor:#44c5c8;\n\t\t\tdisplay:inline;\n\t\t}\n\n  "],
             providers: [general_service_1.generalService]
         }), 
-        __metadata('design:paramtypes', [ionic_angular_1.NavController, general_service_1.generalService, ionic_angular_1.NavParams])
+        __metadata('design:paramtypes', [ionic_angular_1.NavController, general_service_1.generalService, ionic_angular_1.NavParams, core_1.ElementRef])
     ], rentIt);
     return rentIt;
 }());
 exports.rentIt = rentIt;
 
-},{"../../services/general.service":15,"../cars/cars":3,"./date/date1":10,"./date/date2":11,"./location/location":12,"./location/location2":13,"ionic-angular":335}],15:[function(require,module,exports){
+},{"../../services/general.service":15,"../cars/cars":3,"./date/date1":10,"./date/date2":11,"./location/location":12,"./location/location2":13,"angular2/core":18,"ionic-angular":335}],15:[function(require,module,exports){
 "use strict";
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;

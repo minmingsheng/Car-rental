@@ -6,7 +6,7 @@ import {Date1} from './date/date1';
 import {Date2} from './date/date2';
 import {Cars} from '../cars/cars';
 import {generalService} from '../../services/general.service';
-
+import {ElementRef} from 'angular2/core';
 @Page({
     templateUrl: 'build/pages/rentIt/rentIt.html',
     styles: [`
@@ -21,7 +21,7 @@ import {generalService} from '../../services/general.service';
 			top:0;
 			width:100%;
 			height:22.3em;
-			background:#c5c6c5;
+			background:#ffffff;
 		}
 		.btns{
 			position: absolute;
@@ -115,7 +115,11 @@ export class rentIt{
     public basicInfo;
     public local;
     public continue;
-    constructor(private _navController: NavController, private _generalService: generalService,  private navParams: NavParams) {
+    constructor(private _navController: NavController,
+     			private _generalService: generalService,
+      			private navParams: NavParams,
+      			private elementRef: ElementRef
+      			) {
     	this.local = new Storage(LocalStorage);
     	if(navParams.get('pickUpLocaton')){
     		this.local.set('pickUpLocaton', navParams.get('pickUpLocaton'));
@@ -145,101 +149,7 @@ export class rentIt{
   	 	}else{
   	 		this.continue  = false;
   	 	}
-		setTimeout(()=>{
-
-			let mapDom = document.querySelector(".mapr");
-			console.log(mapDom);
-			let options = {timeout: 10000, enableHighAccuracy: true};
-			navigator.geolocation.getCurrentPosition(
-		    (position) => {
-		        let latLng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
-		        /*red style*/
-		        // let styleArray = [{"featureType":"landscape","stylers":[{"visibility":"simplified"},{"color":"#2b3f57"},{"weight":0.1}]},{"featureType":"administrative","stylers":[{"visibility":"on"},{"hue":"#ff0000"},{"weight":0.4},{"color":"#ffffff"}]},{"featureType":"road.highway","elementType":"labels.text","stylers":[{"weight":1.3},{"color":"#FFFFFF"}]},{"featureType":"road.highway","elementType":"geometry","stylers":[{"color":"#f55f77"},{"weight":3}]},{"featureType":"road.arterial","elementType":"geometry","stylers":[{"color":"#f55f77"},{"weight":1.1}]},{"featureType":"road.local","elementType":"geometry","stylers":[{"color":"#f55f77"},{"weight":0.4}]},{},{"featureType":"road.highway","elementType":"labels","stylers":[{"weight":0.8},{"color":"#ffffff"},{"visibility":"on"}]},{"featureType":"road.local","elementType":"labels","stylers":[{"visibility":"off"}]},{"featureType":"road.arterial","elementType":"labels","stylers":[{"color":"#ffffff"},{"weight":0.7}]},{"featureType":"poi","elementType":"labels","stylers":[{"visibility":"off"}]},{"featureType":"poi","stylers":[{"color":"#6c5b7b"}]},{"featureType":"water","stylers":[{"color":"#f3b191"}]},{"featureType":"transit.line","stylers":[{"visibility":"on"}]}];
-		        // let styleArray = [
-		        // {
-		        // 	"featureType":"road",
-		        // 	"elementType":"geometry.fill",
-		        // 	"stylers":[{"color":"#011066"}]
-		        // },
-		        // {
-		        // 	"featureType":"road",
-		        // 	"elementType":"geometry.stroke",
-		        // 	"stylers":[{"visibility":"off"}]
-		        // },
-		        // {
-		        // 	"featureType":"poi",
-		        // 	"elementType":"geometry.fill",
-		        // 	"stylers":[{"color":"#5580aa"}]
-		        // },
-		        // {
-		        // 	"featureType":"landscape",
-		        // 	"elementType":"geometry.fill",
-		        // 	"stylers":[{"color":"#405783"}]
-		        // },{
-		        // 	"elementType":"labels.text",
-		        // 	"stylers":[
-		        // 		{"color":"#ffffff"},
-		        // 		{"weight":0.5}]
-		        // },
-		        // {
-        		// 	"elementType":"labels.icon",
-        		// 	"stylers":[{"visibility":"off"}]
-		        // },
-		        // {
-        		// 	"featureType":"water",
-        		// 	"elementType":"geometry",
-        		// 	"stylers":[{"color":"#27abda"}]
-		        // },
-		        // {
-        		// 	"featureType":"transit",
-        		// 	"elementType":"geometry",
-        		// 	"stylers":[{"color":"#272664"}]
-        		// }] ;
-		        			
-				let styleArray = [
-						    {
-						      featureType: "all",
-						      stylers: [
-						       { saturation: -80 }
-						      ]
-						    },{
-						      featureType: "road.arterial",
-						      elementType: "geometry",
-						      stylers: [
-						        { hue: "#00ffee" },
-						        { saturation: 50 }
-						      ]
-						    },{
-						      featureType: "poi.business",
-						      elementType: "labels",
-						      stylers: [
-						        { visibility: "off" }
-						      ]
-						    }
-						 ];
-
-		        let mapOptions = {
-		            center: latLng,
-		            styles: styleArray,
-		            zoom: 15,
-		            mapTypeId: google.maps.MapTypeId.ROADMAP
-		        }
-
-		        this.map = new google.maps.Map(document.querySelector(".mapr"), mapOptions);
-		        let marker = new google.maps.Marker({
-		        	scrollwheel: false,
-		            map: this.map,
-		            animation: google.maps.Animation.DROP,
-		            position: this.map.getCenter()
-		         });
-		        let content = "<h4>Information!</h4>"; 
-		        this.addInfoWindow(marker, content);
-		    },
-			
-			(error) => {
-			        console.log(error);
-			    }, options);
-			}, 100);
+		
 			this.getTime();
     }
     getTime(){
@@ -299,6 +209,62 @@ export class rentIt{
     }
     back(){
     	this._navController.pop();
+    }
+    onPageDidEnter(){
+    	setTimeout(()=>{
+    		// console.log("elementRef.nativeElement: ",this.elementRef.nativeElement.querySelector(".mapr"));
+    		
+			// let mapDom = document.querySelector(".mapr");
+			let mapDom = this.elementRef.nativeElement.querySelector(".mapr");
+			console.log("mapDom", mapDom);
+			let options = {timeout: 10000, enableHighAccuracy: true};
+			navigator.geolocation.getCurrentPosition(
+		    (position) => {
+		        let latLng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+				let styleArray = [
+						    {
+						      featureType: "all",
+						      stylers: [
+						       { saturation: -80 }
+						      ]
+						    },{
+						      featureType: "road.arterial",
+						      elementType: "geometry",
+						      stylers: [
+						        { hue: "#00ffee" },
+						        { saturation: 50 }
+						      ]
+						    },{
+						      featureType: "poi.business",
+						      elementType: "labels",
+						      stylers: [
+						        { visibility: "off" }
+						      ]
+						    }
+						 ];
+
+		        let mapOptions = {
+		            center: latLng,
+		            styles: styleArray,
+		            zoom: 15,
+		            mapTypeId: google.maps.MapTypeId.ROADMAP
+		        }
+
+		        this.map = new google.maps.Map(mapDom, mapOptions);
+		        let marker = new google.maps.Marker({
+		        	scrollwheel: false,
+		            map: this.map,
+		            animation: google.maps.Animation.DROP,
+		            position: this.map.getCenter()
+		         });
+		        let content = "<h4>Information!</h4>"; 
+		        this.addInfoWindow(marker, content);
+		    },
+			
+			(error) => {
+			        console.log(error);
+			    }, options);
+			}, 100);
     }
 
 }	

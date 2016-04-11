@@ -20,6 +20,8 @@ import {rentIt} from '../rentIt';
    			font-family: "roboto"!importnat;
    			font-weight:light!important;
    			text-align:center!important;
+            background:rgb(60, 57, 74);
+
     	}
     	.tabs{
     		display: flex;
@@ -29,11 +31,16 @@ import {rentIt} from '../rentIt';
     	
     	.bg{
     		background:#171230!important;
-    		color:#ffffff!important;
+
     		border-bottom: 2px solid #46c1c6;
     	}
+        .bgw{
+            color:rgb(66, 191, 195)!important;
+        }
     	.p{
 			line-height:0;
+            color:#fff;
+            opacity:0.7;
     	}
     	.calender-title{
     		width:100%;
@@ -53,7 +60,7 @@ import {rentIt} from '../rentIt';
     		margin:0;
     		padding:0;
     		text-align:center;
-    		background:#97959f;
+    		background:rgb(140, 144, 157);
     		padding-left:1em;
     		padding-right:1.5em;
     	}

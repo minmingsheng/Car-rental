@@ -32,14 +32,14 @@
   > 
     Add a credit or debet card
   </button>
-  <div style="height: 23em; width: 100%; transition: all 400ms cubic-bezier(.17,.67,.72,1.21); padding-top: 1em; padding-bottom: 1em" [class.credit]="!credit">
-      <ion-input type="text" style="width: 90%; border:1px solid #15132a; margin: auto; padding-left: 1.3em"  placeholder="Name on card"></ion-input>
-      <ion-input type="text" style="width: 90%; border:1px solid #15132a; margin: auto; margin-top: 0.3em; padding-left: 1.3em" placeholder="Card number"></ion-input>
+  <div style="height: 23em; width: 100%; transition: all 400ms cubic-bezier(.17,.67,.72,1.21); padding-top: 1em; padding-bottom: 1em; box-sizing: border-box;" [class.credit]="!credit">
+      <ion-input type="text" style="width: 90%; background: url(build/img/fullBorder-71.png) no-repeat; background-size: cover; margin: auto; padding-left: 1.3em"  placeholder="Name on card"></ion-input>
+      <ion-input type="text" style="width: 90%; background: url(build/img/fullBorder-71.png) no-repeat; background-size: cover;  margin: auto; margin-top: 0.3em; padding-left: 1.3em" placeholder="Card number"></ion-input>
      
-      <div style="width: 90%; height:3em; margin: auto; margin-top: 0.3em; display: flex;">
-          <ion-input type="text" style=" border: 1px solid #15132a; flex:1; padding-left: 1.3em" placeholder="Month"></ion-input>
-          <ion-input type="text" style=" border: 1px solid #15132a; flex:1;margin-left: 0.4em; padding-left: 1.3em" placeholder="Year"></ion-input>
-          <ion-input type="text" style=" border: 1px solid #15132a; flex:1;margin-left: 0.4em; padding-left: 1.3em" placeholder="CCV"></ion-input>
+      <div style="width: 90%; height:3em; margin: auto; margin- top: 0.3em; display: flex;">
+          <ion-input type="text" style=" background: url(build/img/fullBorder-71.png) no-repeat; background-size: cover;  flex:1; padding-left: 1.3em" placeholder="Month"></ion-input>
+          <ion-input type="text" style=" background: url(build/img/fullBorder-71.png) no-repeat; background-size: cover;  flex:1;margin-left: 0.4em; padding-left: 1.3em" placeholder="Year"></ion-input>
+          <ion-input type="text" style=" background: url(build/img/fullBorder-71.png) no-repeat; background-size: cover;  flex:1;margin-left: 0.4em; padding-left: 1.3em" placeholder="CCV"></ion-input>
       </div>
       <div style="width: 90%; height:3em; margin: auto; margin-top: 0.3em; background: #15132a; color:#42bfc3;line-height: 3em; text-align: center;">
         Add your card
@@ -47,7 +47,9 @@
       <div style="width: 90%; height:7.5em; margin: auto; margin-top: 0.3em; overflow: scroll">
         <!-- card info ngFor --> 
         <div style=" width:100%; height: 3.4em; background: rgba(114, 117, 128, 0.5); margin: 0.3em 0; display: flex;position: relative; padding-left: 1em; color:rgba(0,0,0,0.8)" *ngFor = '#card of cards'>
-            <div style="width: 2em; height: 2em; background-size:cover;position: absolute;top:0;bottom: 0; margin: auto;"></div>
+            <div style="width: 2em; height: 2em; background-size:cover;position: absolute;top:0;bottom: 0; margin: auto;">
+              <img src={{card.url}} alt="" style="width: 100%;height: 80%;">
+            </div>
             <div style=" flex:3; line-height: 3.4em; margin-left: 3em">
               {{card.number}}
             </div>          
@@ -72,9 +74,25 @@
   > 
     Promotion Code /Gift card
   </button>
-   <div style="height: 10em; width: 100%;  transition: all 400ms cubic-bezier(.17,.67,.72,1.21)" [class.gift]="!gift">
-     
-   </div>
+  <!-- gift card -->
+  <div style="height: 10em; width: 100%;  transition: all 400ms cubic-bezier(.17,.67,.72,1.21); margin-top: 1em" [class.gift]="!gift">
+       <div style="width: 90%; height:3em; margin: auto; margin-top: 0.3em; display: flex;">
+         <div style="flex:6;">
+            <ion-input type="text" style=" background: url(build/img/fullBorder-71.png); background-size: cover; padding-left: 1em; height: 100%;" placeholder="Enter promotion / gift code"></ion-input>
+         </div>
+         <div style="flex:1.5; background:rgb(21, 19, 42); line-height: 2.6em; text-align: center; color:rgb(66, 191, 195); ">
+           use
+         </div>
+       </div>
+       <div style="width: 90%; height:3em; margin: auto; margin-top: 0.3em; display: flex; margin-top: 1em">
+         <div style="flex:1; text-align: left;">
+          Total
+         </div>
+         <div style="flex:1; text-align: right;">
+           -0.00 CAD
+         </div>
+       </div>
+  </div>
   
 <!-- search button -->
   <button 

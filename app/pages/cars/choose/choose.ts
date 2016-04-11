@@ -55,7 +55,72 @@ export class Choose {
 		{url: "build/img/cars-49.jpg", name: "Luxury & Convertibles"},
 		{url: "build/img/cars-50.jpg", name: "SUVs & Wagons"},
 		{url: "build/img/cars-51.jpg", name: "Trucks & Vans"}
-	]
+	];
+	public cars = [
+		{
+		id:1,
+		url: "build/img/cars/1.png",
+		name:"Audi A5",
+		nick:"Cabiolet",
+		price:114.00,
+		service: "GPS",
+		transmistion: "Automatic"
+		},
+		{
+		id:2,
+		url: "build/img/cars/2.png",
+		name:"JAOSn A5",
+		nick:"asdas",
+		price:12.00,
+		service: "afdafsa",
+		transmistion: "Automatic"
+		},
+		{
+		id:3,
+		url: "build/img/cars/3.png",
+		name:"BWM A5",
+		nick:"eadadt",
+		price:331.00,
+		service: "GPS",
+		transmistion: "asdada"
+		},
+		{
+		id:4,
+		url: "build/img/cars/4.png",
+		name:"adadsa A5",
+		nick:"adasdaa",
+		price:54.00,
+		service: "dfgd",
+		transmistion: "232das"
+		},
+		{
+		id:5,
+		url: "build/img/cars/5.png",
+		name:"adad1 A5",
+		nick:"fsf",
+		price:114.00,
+		service: "GPdShd",
+		transmistion: "adasd"
+		},
+		{
+		id:7,
+		url: "build/img/cars/6.png",
+		name:"aaaa A5",
+		nick:"ss",
+		price:114.00,
+		service: "GPS",
+		transmistion: "ssss"
+		},
+		{
+		id:8,
+		url: "build/img/cars/7.png",
+		name:"fghjkl A5",
+		nick:"jjj",
+		price:114.00,
+		service: "GPS",
+		transmistion: "ffff"
+		}
+	];
 	public myIcon;
     constructor(private _NavController: NavController, private navParams : NavParams) {
     	 this.myIcon = "logo-apple";
@@ -72,6 +137,7 @@ export class Choose {
     	this._NavController.pop();
     }
     goToChooseResult(t){
-    	this._NavController.push(chooseResult, {days : this.days})
+    	alert(t)
+    	this._NavController.push(chooseResult, {days : this.days, id: t})
     }
 }

@@ -3,26 +3,26 @@
 <ion-title style="background:url(build/img/NavBarBg-53.jpg)">
      <img src="build/img/zentalLogo-04.png" alt="loading.." style="width: 40%">
 </ion-title>
-	<!-- <ion-label (click)="onDiscard()" end>Discard</ion-label> -->
+	<!-- <ion-label (touchend)="onDiscard()" end>Discard</ion-label> -->
 	<ion-buttons end>
-	  <button (click)="onDiscard()">
+	  <button (touchend)="onDiscard()">
 	    Discard
 	  </button>
 	</ion-buttons>
 </ion-navbar>
 <ion-content  style="background:url(build/img/subbg-52.jpg); background-size: cover;">
 	<div class="tabs">
-		<ion-card class="card"  (click)= "activeSearch()" [class.bg]="search">
+		<ion-card class="card"  (touchend)= "activeSearch()" [class.bg]="search">
 		  <ion-card-header [class.bg]="search">
 		    <p style="color:white">Search</p>
 		  </ion-card-header>
 		</ion-card>
-		<ion-card class="card" (click)= "activeRecent()" [class.bg]="recent">
+		<ion-card class="card" (touchend)= "activeRecent()" [class.bg]="recent">
 		  <ion-card-header [class.bg]="recent">
 		    <p style="color:white">Recent</p>
 		  </ion-card-header>
 		</ion-card>
-		<ion-card class="card" (click)= "activeNearMe()" [class.bg]="nearMe">
+		<ion-card class="card" (touchend)= "activeNearMe()" [class.bg]="nearMe">
 		  <ion-card-header [class.bg]="nearMe">
 		    <p style="color:white">Near Me</p>
 		  </ion-card-header>
@@ -44,11 +44,11 @@
 					{{recentResult.tel}}
 				 </ion-card-content>
 			</div>
-			<button (click)="getLocation(recentResult.name)" >select</button>
+			<button (touchend)="getLocation(recentResult.name)" >select</button>
 		</ion-card>
 	</div>
 	<div *ngIf="nearMe" class="tab-recent">
-		<button class="location-list" (click)="onNearMeToMap()" [class.nearMeToMap]="nearMeToMap">Location List</button>
+		<button class="location-list" (touchend)="onNearMeToMap()" [class.nearMeToMap]="nearMeToMap">Location List</button>
 		<div *ngIf = "showList">
 			<ion-card *ngFor = "#nearMeResult of nearMeResults" class="recent-card">
 				<div class="card-info">
@@ -68,7 +68,7 @@
 				{{nearMeAddress}}
 			</ion-card>
 			<div class="map" id="map" #map (load)="onMapLoad(map)">
-				<p style="text-align: center; line-height: 200px">Loading...</p>
+				 <img src="build/img/loading.gif" style="display: block; margin:40% auto; width: 50%">
 			</div>
 		</div>
 

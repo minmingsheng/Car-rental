@@ -10,7 +10,9 @@ import {rentIt} from '../rentIt/rentIt';
 			padding:0;
 		}
 		.gift{
-			height: 1px!important;
+			height: 0px!important;
+			opacity:0;
+			padding:0;
 		}
 		::-webkit-input-placeholder {
 		   color: #6e6e70;
