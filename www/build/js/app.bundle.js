@@ -665,8 +665,41 @@ var Manage = (function () {
                 transmistion: "ffff"
             }
         ];
+        this.sliderOptions = {
+            effect: 'cube',
+            noSwiping: true,
+            direction: 'vertical'
+        };
+        this.paid = [
+            {
+                id: 5,
+                name: "Audi A5 2.0T",
+                url: "build/img/cars/5.png",
+                rLocation: "adad1 East Oakville",
+                pDate: "Feb 14",
+                rDate: "Mar 15",
+                total: 1931
+            },
+        ];
+        this.credits = [
+            {
+                pLocation: "East-Oakville",
+                rLocation: "West-Oakville",
+                miles: "30",
+                credit: 150
+            },
+            {
+                pLocation: "Shanghai",
+                rLocation: "Canada",
+                miles: "1000",
+                credit: 150
+            }
+        ];
         this.num = this.cars.length;
-        this.credit = true;
+        this.preservation = true;
+        this.onpaid = true;
+        this.onbad = true;
+        this.oncredit = true;
         this.gift = true;
         this.cards = [
             { url: "build/img/cars-47.jpg", number: "****323231", date: "10/2017", name: "Jason" },
@@ -690,20 +723,36 @@ var Manage = (function () {
     };
     Manage.prototype.onPageDidEnter = function () {
     };
-    Manage.prototype.onCredit = function () {
-        if (this.credit) {
-            this.credit = false;
+    Manage.prototype.onPreservation = function () {
+        if (this.preservation) {
+            this.preservation = false;
         }
         else {
-            this.credit = true;
+            this.preservation = true;
         }
     };
-    Manage.prototype.onGift = function () {
-        if (this.gift) {
-            this.gift = false;
+    Manage.prototype.onPaid = function () {
+        if (this.onpaid) {
+            this.onpaid = false;
         }
         else {
-            this.gift = true;
+            this.onpaid = true;
+        }
+    };
+    Manage.prototype.onBad = function () {
+        if (this.onbad) {
+            this.onbad = false;
+        }
+        else {
+            this.onbad = true;
+        }
+    };
+    Manage.prototype.onCredit = function () {
+        if (this.oncredit) {
+            this.oncredit = false;
+        }
+        else {
+            this.oncredit = true;
         }
     };
     Manage.prototype.pay = function () {
@@ -712,7 +761,7 @@ var Manage = (function () {
     Manage = __decorate([
         ionic_angular_1.Page({
             templateUrl: 'build/pages/manage/manage.html',
-            styles: ["\n\t\t.credit{\n\t\t\theight: 0px!important;\n\t\t\topacity:0;\n\t\t\tpadding:0;\n\t\t}\n\t\t.gift{\n\t\t\theight: 0px!important;\n\t\t\topacity:0;\n\t\t\tpadding:0;\n\t\t}\n\t\tp{\n\t\t\tmargin:0;\n\t\t\tmargin-top:0.5em;\n\t\t\tpadding-left:1em;\n\t\t}\n    "]
+            styles: ["\n\t\t.preservation{\n\t\t\theight: 0px!important;\n\t\t\topacity:0;\n\t\t\tpadding:0;\n\t\t}\n\t\t.onpaid, .onbad, .oncredit{\n\t\t\theight: 0px!important;\n\t\t\topacity:0;\n\t\t\tpadding:0;\n\t\t}\n\t\tp{\n\t\t\tmargin:0;\n\t\t\tmargin-top:0.5em;\n\t\t\tpadding-left:1em;\n\t\t}\n    "]
         }), 
         __metadata('design:paramtypes', [ionic_angular_1.NavController])
     ], Manage);

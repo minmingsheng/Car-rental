@@ -26,7 +26,7 @@
           <img src={{profile.img}} alt="">
         </div>
       </div>
-      <div style="flex:2;">
+      <div style="flex:2; text-shadow: 1px 1px 11px rgba(0,0,0,0.4)">
         <p style="margin-top: 1.3em"><b>Username</b>: {{profile.username}}</p>
         <p><b>credit</b>: {{profile.credit}} pt</p>
         <p><b>email</b>: {{profile.email}}</p>
@@ -37,7 +37,7 @@
 
   <!-- preservation -->
   <button 
-    block (click)="onCredit()" 
+    block (click)="onPreservation()" 
     style="
     top: 0; margin:0; border-radius:0; background: #15132a; height:3em; color:#41c3c6;
     "
@@ -45,17 +45,15 @@
         Preservation of {{num}}
   </button>
 
-  <div style="height: 13em; width: 100%; transition: all 400ms cubic-bezier(.17,.67,.72,1.21); padding-top: 1em; padding-bottom: 1em; box-sizing: border-box;" [class.credit]="!credit">
-      <ion-slides pager (change)="onSlideChanged()" [zoom] = "1" [zoomDuration]="300" [paper] = "true" [option]="option">
-           <ion-slide *ngFor = "#src of cars">
+  <div style="height: 14em; width: 100%; transition: all 400ms cubic-bezier(.17,.67,.72,1.21); padding-top: 0em; padding-bottom: 0em; box-sizing: border-box;" [class.preservation]="!preservation">
+      <ion-slides pager autoplay="true" options={{sliderOptions}}>
+           <ion-slide *ngFor = "#src of cars" style="margin-top: 1.4em; position: relative;">
               <!-- imgs -->
-             <div style="width: 9em; margin:auto; height:13em; position: relative; background: url(build/img/carBg-70.png) no-repeat; background-position: center 0; background-size: 70% 62%;">
-                <p style="color:white; margin-top:1.5em; font-size:0.9em; text-align: left; padding-top:0.5em; padding-left:40px; margin-bottom: 0">{{src.name}}</p>
-                <p style="color:white; font-size:0.7em; margin:0; padding-top: 0em; text-align: left; padding-left:40px; padding-bottom: 0;">{{src.nick}}</p>
-               <img src={{src.url}} alt="" style="margin-top: 0em; width: 300px; transform: translate(0,-0.5em);">
-               <p style="color:#42bfc3; margin:0; padding-top: 0.6em; text-align: left; padding-left: 30px; padding-bottom: 0; font-size:0.6em; transform: translate(0,-1.6em); transform: translate(0,-3.2em);" class="carP">{{src.price}} CAD / Day</p>
-               <p style="color:white; margin:0; padding-top: 0em; text-align: left; padding-left: 30px; padding-bottom: 0; font-size:0.7em; transform: translate(0,-1.6em);">{{src.transmistion}}</p>
-               <p style="color:white; margin:0; padding-top: 0; text-align: left; padding-left: 30px; padding-bottom: 0; font-size:0.7em; transform: translate(0,-1.6em);">{{src.service}}</p>
+              <img src="build/img/del-79.png" alt="" style="position: absolute; top:-1em; right: 33%;z-index: 10000; width: 1.3em">
+             <div style="width: 9em; margin:auto; height:13em; position: relative; background: url(build/img/carBg2-78.png) no-repeat; background-position: center 0; background-size: 70% 62%; ">
+                <p style="color:white; margin-top:1.7em; font-size:0.7em; text-align: left; padding-left:40px;padding-top:0.15em; margin-bottom: 0; color:#42bfc3;">{{src.name}}</p>
+               <img src={{src.url}} alt="" style="margin-top: 1em; width: 300px; transform: translate(0,-0.5em);">
+               <p style="color:#fff; margin:0; padding-top: 1em; text-align: left; padding-left: 30px; padding-bottom: 0; font-size:0.6em; transform: translate(0,-1.6em); transform: translate(0,-3.2em);" class="carP">{{src.price | number:'1.2-2'}} CAD / Day</p>
              </div>
            </ion-slide>
          </ion-slides>
@@ -63,7 +61,7 @@
 
   <!-- Paid -->
   <button 
-    block (click)="onGift()" 
+    block (click)="onPaid()" 
     style="
     top: 0; margin:0; border-radius:0; background: #15132a; height:3em;color:#41c3c6;
     "
@@ -71,26 +69,41 @@
   Paid
   </button>
 
-  <div style="height: 10em; width: 100%;  transition: all 400ms cubic-bezier(.17,.67,.72,1.21); margin-top: 1em" [class.gift]="!gift">
-
+  <div style="height: 7em; width: 100%;  transition: all 400ms cubic-bezier(.17,.67,.72,1.21); background: url(build/img/paidBg-80.png); background-size: cover; display: flex;" [class.onpaid]="!onpaid" *ngFor = "#paid of paid">
+    <div style="flex:1.3;">
+      <img src={{paid.url}} alt="" style="width: 80%; display: block; margin:1em auto;">
+    </div>
+    <div style="flex:2.3; padding-top: 0.7em; " >
+      <b style="color: #fff; padding-left: 0.8em; margin-top: 1em  font-size: 0.8em; ">{{paid.name}}</b>
+      <p style="color: #fff; margin-top: 0.3em; font-size: 0.8em">{{paid.rLocation}}</p>
+      <p style="color: #fff; margin-top: 0.3em; font-size: 0.8em">{{paid.pDate}}-{{paid.rDate}}</p>
+      <p style="color: #fff; margin-top: 0.3em; font-size: 0.8em">{{paid.total | number: '1.2-2'}} CAD</p>
+    </div>
+    <div style="flex:1.5; background: rgba(21, 19, 42, 0.9); text-align: center; color:#42bfc3; line-height: 7em; font-size: 1.1em">
+      Alarm
+    </div>
   </div><!-- end of paid -->
 
   <!-- bad record -->
   <button 
-    block (click)="onGift()" 
+    block (click)="onBad()" 
     style="
     top: 0; margin:0; border-radius:0; background: #15132a; height:3em;color:#41c3c6;
     "
   > 
   Bad record
   </button>
-  <div style="height: auto; width: 100%;  transition: all 400ms cubic-bezier(.17,.67,.72,1.21); margin-top: 1em;" [class.gift]="!gift">
-
+  <div style="height: 5em; width: 100%;  transition: all 400ms cubic-bezier(.17,.67,.72,1.21);" [class.onbad]="!onbad" >
+    <div style="padding-top: 1em">
+      <p style="text-align: center;height: 3em; padding: 0; text-shadow: 1px 1px 11px rgba(0,0,0,0.4)"> 
+        Congrats! No any bad record documented!
+      </p>
+    </div>
   </div><!-- end of bad record -->
 
   <!-- credit -->
   <button 
-    block (click)="onGift()" 
+    block (click)="onCredit()" 
     style="
     top: 0; margin:0; border-radius:0; background: #15132a; height:3em;color:#41c3c6;
     border-width: 1px;
@@ -100,14 +113,22 @@
   > 
   Credit
   </button>
-  <div style="height: 10em; width: 100%;  transition: all 400ms cubic-bezier(.17,.67,.72,1.21); margin-top: 1em" [class.gift]="!gift">
-
+  <div style="height: 10em; width: 100%;  transition: all 400ms cubic-bezier(.17,.67,.72,1.21);" [class.oncredit]="!oncredit">
+    
+    <div style="padding-left:2em;padding-right:2em; display: flex" *ngFor="#info of credits">
+      <p style="flex:1; text-align: left; height: 3em; padding: 0; text-shadow: 1px 1px 11px rgba(0,0,0,0.4)"> 
+        {{info.pLocation}} to {{info.rLocation}}, {{info.miles}} miles
+      </p>
+      <p style="flex:1; text-align: right; height: 3em; padding: 0; text-shadow: 1px 1px 11px rgba(0,0,0,0.4)"> 
+        {{info.credit}} Pts
+      </p>
+    </div>
   </div><!-- end of creidt -->
   
 
 
 </ion-content>
-<ion-toolbar 
+<!-- <ion-toolbar 
   block 
   style="
   position: absolute; bottom: 0; margin:0; border-radius:0; background: #15132a; height:4em; color:#41c3c6;
@@ -117,4 +138,4 @@
   "> 
    pay
 </ion-toolbar>
-
+ -->

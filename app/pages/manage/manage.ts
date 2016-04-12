@@ -4,12 +4,12 @@ import {rentIt} from '../rentIt/rentIt';
 @Page({
     templateUrl: 'build/pages/manage/manage.html',
     styles: [`
-		.credit{
+		.preservation{
 			height: 0px!important;
 			opacity:0;
 			padding:0;
 		}
-		.gift{
+		.onpaid, .onbad, .oncredit{
 			height: 0px!important;
 			opacity:0;
 			padding:0;
@@ -94,8 +94,42 @@ export class Manage {
 		transmistion: "ffff"
 		}
 	];
+	public  sliderOptions: any = {
+        effect: 'cube',
+        noSwiping: true,
+        direction: 'vertical'
+    };
+    public paid = [
+    	{
+    	id:5,
+    	name: "Audi A5 2.0T",
+    	url: "build/img/cars/5.png",
+    	rLocation:"adad1 East Oakville",
+    	pDate:"Feb 14",
+    	rDate:"Mar 15",
+    	total: 1931
+    	},
+    ]
+    public credits = [
+    	{
+    		pLocation: "East-Oakville",
+    		rLocation: "West-Oakville",
+    		miles: "30",
+    		credit: 150
+    	},
+    	{
+    		pLocation: "Shanghai",
+    		rLocation: "Canada",
+    		miles: "1000",
+    		credit: 150
+    	}
+    ]
 	public num = this.cars.length;
-	public credit = true;
+	public preservation = true;
+	public onpaid = true;
+	public onbad = true;
+	public oncredit = true;
+
 	public gift = true;
 	public cards=[
 		{url: "build/img/cars-47.jpg",number:"****323231", date: "10/2017", name: "Jason"},
@@ -127,18 +161,32 @@ export class Manage {
     	
     }
 
-    onCredit(){
-    	if(this.credit){
-    		this.credit = false;
+    onPreservation(){
+    	if(this.preservation){
+    		this.preservation = false;
     	}else{
-    		this.credit = true;
+    		this.preservation = true;
     	}
     }
-    onGift(){
-    	if(this.gift){
-    		this.gift = false;
+    onPaid(){
+    	if(this.onpaid){
+    		this.onpaid = false;
     	}else{
-    		this.gift = true;
+    		this.onpaid = true;
+    	}
+    }
+    onBad(){
+    	if(this.onbad){
+    		this.onbad = false;
+    	}else{
+    		this.onbad = true;
+    	}
+    }
+    onCredit(){
+    	if(this.oncredit){
+    		this.oncredit = false;
+    	}else{
+    		this.oncredit = true;
     	}
     }
     pay(){
