@@ -1,6 +1,7 @@
 import {Page,NavController} from 'ionic-angular';
 import {rentIt} from '../rentIt';
 import {generalService} from '../../../services/general.service';
+import {ApiService} from '../../../services/api';
 import {Menu} from '../../menu/menu';
 
 @Page({
@@ -36,15 +37,15 @@ import {Menu} from '../../menu/menu';
     		height:6.5em!important;
     		display:flex!important;
     		position: relative;
-    		border-bottom:1px solid #518ef5;
+    		background:transparent;
     	}
     	.recent-card .card-info{
     		flex:4;
-    		background:rgba(188, 189, 191, 0.5);
+    		background:rgba(188, 189, 191, 0);
    
     	}
     	.recent-card:nth-child(2n) .card-info{
-    		background:rgba(176, 177, 180, 0.5);
+    		background:rgba(176, 177, 180, 0.4);
     	}
 
     	.recent-card .card-info .name{
@@ -101,7 +102,7 @@ import {Menu} from '../../menu/menu';
 		}
 
   `],
-   providers: [generalService]
+   providers: [generalService, ApiService]
 })
 
 export class Location {
@@ -139,8 +140,9 @@ export class Location {
 		address: "463 Trafagar road Oakville, ON, B6H B3S",
 		tel: "902-322-1234",
 	}] 
-    constructor(private _navController: NavController, private _generalService: generalService) {
+    constructor(private _navController: NavController, private _generalService: generalService, private _apiService: ApiService) {
     	this.map = null;
+    	
     };
     getLocation(location){
     	this._generalService.getLocation(location);
@@ -153,6 +155,10 @@ export class Location {
     	this.search = true;
     	this.recent = false;
     	this.nearMe=false;
+    	setTimeout(()=>{
+    		this.initAutocomplete();
+    	}, 100)
+    	
     };
     activeRecent(){
     	this.search = false;
@@ -164,6 +170,16 @@ export class Location {
     	this.recent = false;
     	this.nearMe=true;
     };
+    listLocation(){
+    	this._apiService.getLcboLocation()
+  		// console.log(this._apiService.getLcboLocation());
+  		// this._apiService.getLcboLocation().subscribe(
+    //     data => { console.log(data);
+    //     },
+    //     err => console.error(err),
+    //     () => console.log('done')
+    //   );
+    }
     onNearMeToMap(){
     	if(this.nearMeToMap){
     		/*top*/
@@ -175,6 +191,7 @@ export class Location {
     		this.showList = false;
 
     		setTimeout(()=>{
+    			this.listLocation();
 				let mapDom = document.querySelector(".map");
 				let options = {timeout: 10000, enableHighAccuracy: true};
 				
@@ -207,8 +224,9 @@ export class Location {
 				        let mapOptions = {
 				            center: latLng,
 				            styles: styleArray,
-				            zoom: 15,
-				            mapTypeId: google.maps.MapTypeId.ROADMAP
+				            zoom: 13
+				            ,mapTypeId: google.maps.MapTypeId.ROADMAP,
+				          	disableDefaultUI: true
 				        }
 
 				        this.map = new google.maps.Map(document.getElementById("map"), mapOptions);
@@ -216,7 +234,7 @@ export class Location {
 				        	scrollwheel: false,
 				            map: this.map,
 				            animation: google.maps.Animation.DROP,
-				            position: this.map.getCenter()
+				            position: latLng
 				         });
 				        let content = "<h4>Information!</h4>"; 
 				        this.addInfoWindow(marker, content);
@@ -238,6 +256,110 @@ export class Location {
         infoWindow.open(this.map, marker);
       });
      
+    }
+    back(){
+    	this._navController.push(rentIt)
+    }
+    initAutocomplete() {
+    	let latLng;
+    	navigator.geolocation.getCurrentPosition(
+			(position) => { 
+						let latLng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+				    	let styleArray = [
+										    {
+										      featureType: "all",
+										      stylers: [
+										       { saturation: -80 }
+										      ]
+										    },{
+										      featureType: "road.arterial",
+										      elementType: "geometry",
+										      stylers: [
+										        { hue: "#00ffee" },
+										        { saturation: 50 }
+										      ]
+										    },{
+										      featureType: "poi.business",
+										      elementType: "labels",
+										      stylers: [
+										        { visibility: "off" }
+										      ]
+										    }
+										 ];
+				        var map = new google.maps.Map(document.getElementById('maps'), {
+				          center: latLng,
+				          zoom: 13,
+				          styles:styleArray,
+				          mapTypeId: google.maps.MapTypeId.ROADMAP,
+				          disableDefaultUI: true
+				        });
+				        
+				        // Create the search box and link it to the UI element.
+				        var input = document.getElementById('pac-input');
+				        var searchBox = new google.maps.places.SearchBox(input);
+				        map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
+
+				        // Bias the SearchBox results towards current map's viewport.
+				        map.addListener('bounds_changed', function() {
+				          searchBox.setBounds(map.getBounds());
+				        });
+
+				        var markers = [];
+				        // Listen for the event fired when the user selects a prediction and retrieve
+				        // more details for that place.
+				        searchBox.addListener('places_changed', function() {
+				          var places = searchBox.getPlaces();
+
+				          if (places.length == 0) {
+				            return;
+				          }
+
+				          // Clear out the old markers.
+				          markers.forEach(function(marker) {
+				            marker.setMap(null);
+				          });
+				          markers = [];
+
+				          // For each place, get the icon, name and location.
+				          var bounds = new google.maps.LatLngBounds();
+				          places.forEach(function(place) {
+				            var icon = {
+				              url: place.icon,
+				              size: new google.maps.Size(71, 71),
+				              origin: new google.maps.Point(0, 0),
+				              anchor: new google.maps.Point(17, 34),
+				              scaledSize: new google.maps.Size(25, 25)
+				            };
+
+				            // Create a marker for each place.
+				            markers.push(new google.maps.Marker({
+				              map: map,
+				              icon: icon,
+				              title: place.name,
+				              position: place.geometry.location
+				            }));
+
+				            // let marker = new google.maps.Marker({
+				            // 	scrollwheel: false,
+				            //     map: this.map,
+				            //     animation: google.maps.Animation.DROP,
+				            //     position: latLng
+				            //  });
+				            // let content = "<h4>Information!</h4>"; 
+				            // this.addInfoWindow(marker, content);
+				            if (place.geometry.viewport) {
+				              // Only geocodes have viewport.
+				              bounds.union(place.geometry.viewport);
+				            } else {
+				              bounds.extend(place.geometry.location);
+				            }
+				          });
+				          map.fitBounds(bounds);
+				        });
+			}
+		)
+  
+
     }
 
 }	

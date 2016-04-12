@@ -1,29 +1,35 @@
-<ion-navbar *navbar>
+
+<ion-navbar *navbar hideBackButton>
+	<ion-buttons start>
+	  <button (touchend) = "back()" style="color:#44c5c8; padding-right: 1em; opacity: 0.7;">
+	    <img src="build/img/backCar-54.png" alt="" style="width: 60%">
+	  </button>
+	</ion-buttons>
 	<ion-title style="background:url(build/img/NavBarBg-53.jpg)">
 	     <img src="build/img/zentalLogo-04.png" alt="loading.." style="width: 40%">
 	</ion-title>
-	<!-- <ion-label (click)="onDiscard()" end>Discard</ion-label> -->
+	<!-- <ion-label (touchend)="onDiscard()" end>Discard</ion-label> -->
 	<ion-buttons end>
-	  <button (click)="onDiscard()">
+	  <button (touchend)="onDiscard()" style="color: #42bfc3">
 	    Discard
 	  </button>
 	</ion-buttons>
 </ion-navbar>
 <ion-content  style="background:url(build/img/subbg-52.jpg); background-size: cover;">
 	<div class="tabs">
-		<ion-card class="card"  (click)= "activeSearch()" [class.bg]="search">
+		<ion-card class="card"  (touchend)= "activeSearch()" [class.bg]="search">
 		  <ion-card-header [class.bg]="search">
-		     <p style="color:white;white">Search</p>
+		    <p style="color:white">Search</p>
 		  </ion-card-header>
 		</ion-card>
-		<ion-card class="card" (click)= "activeRecent()" [class.bg]="recent">
+		<ion-card class="card" (touchend)= "activeRecent()" [class.bg]="recent">
 		  <ion-card-header [class.bg]="recent">
-		     <p style="color:white;white">Recent</p>
+		    <p style="color:white">Recent</p>
 		  </ion-card-header>
 		</ion-card>
-		<ion-card class="card" (click)= "activeNearMe()" [class.bg]="nearMe">
+		<ion-card class="card" (touchend)= "activeNearMe()" [class.bg]="nearMe">
 		  <ion-card-header [class.bg]="nearMe">
-		     <p style="color:white;white">Near Me</p>
+		    <p style="color:white">Near Me</p>
 		  </ion-card-header>
 		</ion-card>
 	</div>
@@ -43,11 +49,11 @@
 					{{recentResult.tel}}
 				 </ion-card-content>
 			</div>
-			<button (click)="getLocation(recentResult.name)" >select</button>
+			<button (touchend)="getLocation(recentResult.name)" >select</button>
 		</ion-card>
 	</div>
 	<div *ngIf="nearMe" class="tab-recent">
-		<button class="location-list" (click)="onNearMeToMap()" [class.nearMeToMap]="nearMeToMap">Location List</button>
+		<button class="location-list" (touchend)="onNearMeToMap()" [class.nearMeToMap]="nearMeToMap">Location List</button>
 		<div *ngIf = "showList">
 			<ion-card *ngFor = "#nearMeResult of nearMeResults" class="recent-card">
 				<div class="card-info">
@@ -59,15 +65,15 @@
 						{{nearMeResult.tel}}
 					 </ion-card-content>
 				</div>
-				<button>select</button>
+				<button (touchend)="getLocation(nearMeResult.name)">select</button>
 			</ion-card>
 		</div>
 		<div *ngIf = "!showList">
 			<ion-card class="map-address">
 				{{nearMeAddress}}
 			</ion-card>
-			<div class="map">
-				<p style="text-align: center; line-height: 200px">Loading...</p>
+			<div class="map2" >
+				 <img src="build/img/loading.gif" style="display: block; margin:40% auto; width: 50%">
 			</div>
 		</div>
 
