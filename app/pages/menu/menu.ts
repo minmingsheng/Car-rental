@@ -1,5 +1,6 @@
 import {Page, NavController,NavParams,Storage,LocalStorage} from 'ionic-angular';  
 import {rentIt} from '../rentIt/rentIt';
+import {Manage} from '../manage/manage';
 import {Use} from '../use/use';
 
 @Page({
@@ -57,6 +58,9 @@ export class Menu {
     }
     back(){
     	this._NavController.pop();
+    }
+    goToManage(){
+    	this._NavController.push(Manage)
     }
 
 }
