@@ -1,5 +1,6 @@
 import {Page, NavController} from 'ionic-angular';  
 import {rentIt} from '../rentIt/rentIt';
+import {Menu} from '../menu/menu';
 
 @Page({
     templateUrl: 'build/pages/manage/manage.html',
@@ -140,15 +141,7 @@ export class Manage {
 		{url: "build/img/cars-48.jpg",number:"****937839", date: "18/2018", name: "Elaine"},
 	]
     constructor(private _NavController: NavController) {
-    	 this.myIcon = "logo-apple";
-    	 
-    	 setTimeout(()=>{
-    		 let borders = document.querySelectorAll(".item-inner")
-    		 console.log(borders);
-    		 for (var i = 0; i < borders.length; i++) {
-    		 	borders[i].style.border="none";
-    		 }
-    	 },100)
+
     }
 
 
@@ -189,7 +182,5 @@ export class Manage {
     		this.oncredit = true;
     	}
     }
-    pay(){
-    	this._NavController.push(Menu, {pay: true});
-    }
+
 }

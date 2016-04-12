@@ -709,14 +709,6 @@ var Manage = (function () {
             { url: "build/img/cars-48.jpg", number: "****937839", date: "18/2018", name: "Elaine" },
             { url: "build/img/cars-48.jpg", number: "****937839", date: "18/2018", name: "Elaine" },
         ];
-        this.myIcon = "logo-apple";
-        setTimeout(function () {
-            var borders = document.querySelectorAll(".item-inner");
-            console.log(borders);
-            for (var i = 0; i < borders.length; i++) {
-                borders[i].style.border = "none";
-            }
-        }, 100);
     }
     Manage.prototype.back = function () {
         this._NavController.pop();
@@ -754,9 +746,6 @@ var Manage = (function () {
         else {
             this.oncredit = true;
         }
-    };
-    Manage.prototype.pay = function () {
-        this._NavController.push(Menu, { pay: true });
     };
     Manage = __decorate([
         ionic_angular_1.Page({

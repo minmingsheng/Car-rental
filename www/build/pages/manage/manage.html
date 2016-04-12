@@ -1,7 +1,7 @@
 <!-- toolbar -->
 <ion-navbar *navbar hideBackButton  >
   <ion-buttons start>
-    <button (click) = "back()" style="color:#44c5c8; padding-right: 1em; opacity: 0.7;">
+    <button (touchstart) = "back()" style="color:#44c5c8; padding-right: 1em; opacity: 0.7;">
       <img src="build/img/backCar-54.png" alt="" style="width: 60%">
     </button>
   </ion-buttons>
@@ -9,7 +9,7 @@
   <ion-title style="background:url(build/img/NavBarBg-53.jpg)">
    <img src="build/img/zentalLogo-04.png" alt="loading.." style="width: 40%">
   </ion-title>
-  <!-- <ion-label (click)="onDiscard()" end>Discard</ion-label> -->
+  <!-- <ion-label (touchstart)="onDiscard()" end>Discard</ion-label> -->
   <ion-buttons end>
     <button style="color:#44c5c8; padding-right: 1em; opacity: 0.7;">
       Discard
@@ -20,7 +20,7 @@
 
 <ion-content style="background:url(build/img/subbg-52.jpg); background-size: cover;">
   <!-- personal profile -->
-  <div style="display: flex; width: 100%; height: 11em">
+  <div style="display: flex; width: 100 %; height: 11em">
       <div style="flex:1.3;">
         <div style="width: 8.7em; height: 8.7em; border-radius: 50%; background: black; margin:1em auto; overflow: hidden;">
           <img src={{profile.img}} alt="">
@@ -37,7 +37,7 @@
 
   <!-- preservation -->
   <button 
-    block (click)="onPreservation()" 
+    block (touchstart)="onPreservation()" 
     style="
     top: 0; margin:0; border-radius:0; background: #15132a; height:3em; color:#41c3c6;
     "
@@ -46,22 +46,22 @@
   </button>
 
   <div style="height: 14em; width: 100%; transition: all 400ms cubic-bezier(.17,.67,.72,1.21); padding-top: 0em; padding-bottom: 0em; box-sizing: border-box;" [class.preservation]="!preservation">
-      <ion-slides pager autoplay="true" options={{sliderOptions}}>
-           <ion-slide *ngFor = "#src of cars" style="margin-top: 1.4em; position: relative;">
-              <!-- imgs -->
-              <img src="build/img/del-79.png" alt="" style="position: absolute; top:-1em; right: 33%;z-index: 10000; width: 1.3em">
-             <div style="width: 9em; margin:auto; height:13em; position: relative; background: url(build/img/carBg2-78.png) no-repeat; background-position: center 0; background-size: 70% 62%; ">
-                <p style="color:white; margin-top:1.7em; font-size:0.7em; text-align: left; padding-left:40px;padding-top:0.15em; margin-bottom: 0; color:#42bfc3;">{{src.name}}</p>
-               <img src={{src.url}} alt="" style="margin-top: 1em; width: 300px; transform: translate(0,-0.5em);">
-               <p style="color:#fff; margin:0; padding-top: 1em; text-align: left; padding-left: 30px; padding-bottom: 0; font-size:0.6em; transform: translate(0,-1.6em); transform: translate(0,-3.2em);" class="carP">{{src.price | number:'1.2-2'}} CAD / Day</p>
-             </div>
-           </ion-slide>
-         </ion-slides>
+    <ion-slides>
+         <ion-slide *ngFor = "#src of cars" style="margin-top: 1.4em; position: relative;">
+            <!-- imgs -->
+            <img src="build/img/del-79.png" alt="" style="position: absolute; top:-1em; right: 33%;z-index: 10000; width: 1.3em">
+           <div style="width: 9em; margin:auto; height:13em; position: relative; background: url(build/img/carBg2-78.png) no-repeat; background-position: center 0; background-size: 70% 62%; ">
+              <p style="color:white; margin-top:1.7em; font-size:0.7em; text-align: left; padding-left:40px;padding-top:0.15em; margin-bottom: 0; color:#42bfc3;">{{src.name}}</p>
+             <img src={{src.url}} alt="" style="margin-top: 1em; width: 300px; transform: translate(0,-0.5em);">
+             <p style="color:#fff; margin:0; padding-top: 1em; text-align: left; padding-left: 30px; padding-bottom: 0; font-size:0.6em; transform: translate(0,-1.6em); transform: translate(0,-3.2em);" class="carP">{{src.price}} CAD / Day</p>
+           </div>
+         </ion-slide>
+       </ion-slides>
   </div> <!-- end of preservation-->
 
   <!-- Paid -->
   <button 
-    block (click)="onPaid()" 
+    block (touchstart)="onPaid()" 
     style="
     top: 0; margin:0; border-radius:0; background: #15132a; height:3em;color:#41c3c6;
     "
@@ -86,7 +86,7 @@
 
   <!-- bad record -->
   <button 
-    block (click)="onBad()" 
+    block (touchstart)="onBad()" 
     style="
     top: 0; margin:0; border-radius:0; background: #15132a; height:3em;color:#41c3c6;
     "
@@ -103,7 +103,7 @@
 
   <!-- credit -->
   <button 
-    block (click)="onCredit()" 
+    block (touchstart)="onCredit()" 
     style="
     top: 0; margin:0; border-radius:0; background: #15132a; height:3em;color:#41c3c6;
     border-width: 1px;
@@ -124,18 +124,5 @@
       </p>
     </div>
   </div><!-- end of creidt -->
-  
-
-
 </ion-content>
-<!-- <ion-toolbar 
-  block 
-  style="
-  position: absolute; bottom: 0; margin:0; border-radius:0; background: #15132a; height:4em; color:#41c3c6;
-  border-image: url(build/img/border-57.jpg)!important;
-  border-image-width: 3% 200% 3% 0%!important;
-  border-width: 1px;
-  "> 
-   pay
-</ion-toolbar>
- -->
+
