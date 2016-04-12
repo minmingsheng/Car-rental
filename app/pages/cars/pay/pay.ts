@@ -1,5 +1,6 @@
 import {Page, NavController} from 'ionic-angular';  
 import {rentIt} from '../rentIt/rentIt';
+import {Menu} from '../../menu/menu';
 
 @Page({
     templateUrl: 'build/pages/cars/pay/pay.html',
@@ -86,5 +87,8 @@ export class Pay {
     	}else{
     		this.gift = true;
     	}
+    }
+    pay(){
+    	this._NavController.push(Menu, {pay: true});
     }
 }

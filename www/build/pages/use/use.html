@@ -1,0 +1,51 @@
+<ion-navbar *navbar hideBackButton  >
+  <ion-buttons start>
+    <button (click) = "back()" style="color:#44c5c8; padding-right: 1em; opacity: 0.7;">
+      <img src="build/img/backCar-54.png" alt="" style="width: 60%">
+    </button>
+  </ion-buttons>
+
+  <ion-title style="background:url(build/img/NavBarBg-53.jpg)">
+   <img src="build/img/zentalLogo-04.png" alt="loading.." style="width: 40%">
+  </ion-title>
+  <!-- <ion-label (click)="onDiscard()" end>Discard</ion-label> -->
+</ion-navbar>
+
+<ion-content style="background: url(build/img/useBg-71.jpg); background-size: cover">
+  <!-- car arrow -->
+  <div style="display:flex; flex-direction: column; width: 14em; height: 26em; margin:3em auto; position: relative;">
+      <div style="flex:5; margin-top:0.7em;  background: url(build/img/bbg-75.png) no-repeat; background-position: center; background-size: 60% 100%; color:#fff; padding-left: 3.8em; padding-top: 0.5em">
+        <b style="margin:0.3em 0 0 0 ; text-align: left;">{{car.name}}</b >
+        <p style='color:#fff; margin:0;'>{{car.nick}}</p>
+        <img src={{car.url}} alt="" style="position: absolute;left:0;top:3em">
+      </div>
+      <div style="flex:1.4;  margin-top:0.7em; background: url(build/img/sbg-74.png) no-repeat; background-position: center; background-size: 60% 100%; color:#fff; text-align: center; line-height: 3em">
+        {{days}} Days left
+      </div>
+      <div style="flex:1.4; margin-top:0.7em;  background: url(build/img/sbg-74.png) no-repeat; background-position: center; background-size: 60% 100%; color:#fff; text-align: center; line-height: 3em">
+        {{miles}} Miles
+      </div>
+      <div style="flex:3;  margin-top:0.7em; background: url(build/img/arrowImg-73.png) no-repeat; background-position: center; background-size: 100% 100%; color:#fff; text-align: center;line-height: 5em">
+        {{returnLocation}}
+      </div>
+  </div>
+
+  <div style="width: 100%; height: 8em; display: flex; flex-direction: column; position: absolute; bottom: 0">
+      <div style='flex:1; display: flex'>
+          <div style='flex:1; background: rgba(21, 19, 42, 0.7); color:#42bfc3;
+          text-align: center; line-height: 4em; font-size: 1em'>
+            Find Car
+          </div>
+          <div style='flex:1; background: rgba(21, 19, 42, 0.7); border-left:1px solid rgba(21, 19, 42, 1); color:#42bfc3;
+          text-align: center; line-height: 4em; font-size: 1em'>
+            Map
+          </div>
+      </div>
+      <div style='flex:1; background: url(build/img/lock-72.jpg); background-size: cover'></div>
+  </div>
+</ion-content>
+
+  
+
+
+

@@ -17,7 +17,7 @@
   </ion-buttons>
 </ion-navbar>
 
-<!-- filter -->
+
 <ion-content style="background:url(build/img/subbg-52.jpg); background-size: cover;">
   <button 
     block (click)="onCredit()" 
@@ -33,13 +33,13 @@
     Add a credit or debet card
   </button>
   <div style="height: 23em; width: 100%; transition: all 400ms cubic-bezier(.17,.67,.72,1.21); padding-top: 1em; padding-bottom: 1em; box-sizing: border-box;" [class.credit]="!credit">
-      <ion-input type="text" style="width: 90%; background: url(build/img/fullBorder-71.png) no-repeat; background-size: cover; margin: auto; padding-left: 1.3em"  placeholder="Name on card"></ion-input>
-      <ion-input type="text" style="width: 90%; background: url(build/img/fullBorder-71.png) no-repeat; background-size: cover;  margin: auto; margin-top: 0.3em; padding-left: 1.3em" placeholder="Card number"></ion-input>
+      <ion-input type="text" style="width: 90%; border: 1px solid #15132a; margin: auto; padding-left: 1.3em"  placeholder="Name on card"></ion-input>
+      <ion-input type="text" style="width: 90%; border: 1px solid #15132a;  margin: auto; margin-top: 0.3em; padding-left: 1.3em" placeholder="Card number"></ion-input>
      
-      <div style="width: 90%; height:3em; margin: auto; margin- top: 0.3em; display: flex;">
-          <ion-input type="text" style=" background: url(build/img/fullBorder-71.png) no-repeat; background-size: cover;  flex:1; padding-left: 1.3em" placeholder="Month"></ion-input>
-          <ion-input type="text" style=" background: url(build/img/fullBorder-71.png) no-repeat; background-size: cover;  flex:1;margin-left: 0.4em; padding-left: 1.3em" placeholder="Year"></ion-input>
-          <ion-input type="text" style=" background: url(build/img/fullBorder-71.png) no-repeat; background-size: cover;  flex:1;margin-left: 0.4em; padding-left: 1.3em" placeholder="CCV"></ion-input>
+      <div style="width: 90%; height:3em; margin: auto; margin-top: 0.3em; display: flex;">
+          <ion-input type="text" style=" border: 1px solid #15132a;  flex:1; padding-left: 1.3em" placeholder="Month"></ion-input>
+          <ion-input type="text" style=" border: 1px solid #15132a;  flex:1;margin-left: 0.4em; padding-left: 1.3em" placeholder="Year"></ion-input>
+          <ion-input type="text" style=" border: 1px solid #15132a; flex:1;margin-left: 0.4em; padding-left: 1.3em" placeholder="CCV"></ion-input>
       </div>
       <div style="width: 90%; height:3em; margin: auto; margin-top: 0.3em; background: #15132a; color:#42bfc3;line-height: 3em; text-align: center;">
         Add your card
@@ -78,7 +78,7 @@
   <div style="height: 10em; width: 100%;  transition: all 400ms cubic-bezier(.17,.67,.72,1.21); margin-top: 1em" [class.gift]="!gift">
        <div style="width: 90%; height:3em; margin: auto; margin-top: 0.3em; display: flex;">
          <div style="flex:6;">
-            <ion-input type="text" style=" background: url(build/img/fullBorder-71.png); background-size: cover; padding-left: 1em; height: 100%;" placeholder="Enter promotion / gift code"></ion-input>
+            <ion-input type="text" style=" background: url(build/img/fullBorder-71.png);  background-size:cover; padding-left: 1em; height: 100%;" placeholder="Enter promotion / gift code"></ion-input>
          </div>
          <div style="flex:1.5; background:rgb(21, 19, 42); line-height: 2.6em; text-align: center; color:rgb(66, 191, 195); ">
            use
@@ -96,14 +96,14 @@
   
 <!-- search button -->
   <button 
-    block (click)="ok()" 
+    block (touchend)="pay()" 
     style="
     position: absolute; bottom: 0; margin:0; border-radius:0; background: #15132a; height:4em; color:#41c3c6;
     border-image: url(build/img/border-57.jpg)!important;
     border-image-width: 3% 200% 3% 0%!important;
     border-width: 1px;
     "> 
-     Search
+     pay
   </button>
 </ion-content>
 

@@ -21,12 +21,12 @@
    <img src="build/img/menuBg-58.jpg" alt=""> 
   </div>
 	<div class="btns">
-    	<button class="btn" block (click) = "goToRent()" 
+    	<button class="btn" block (touchstart) = "goToRent()" 
       style="background: url(build/img/menubg1-60.jpg); background-size: cover;">
         Rent It
       </button>
     	<button class="btn" block
-      style="background: url(build/img/menubg2-62.jpg); background-size: cover;"
+      style="background: url(build/img/menubg2-62.jpg); background-size: cover;" [class.paybg]="pay"  (touchstart) = "goToUse()"
       >Use It</button>
     	<button class="btn" block
       style="background: url(build/img/menubg3-63.jpg); background-size: cover;"
